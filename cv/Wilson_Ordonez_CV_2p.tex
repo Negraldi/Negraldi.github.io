@@ -6,8 +6,8 @@
 % Rediseño con la skill Impeccable (typeset · layout · colorize · craft-floor),
 % modo "Read": el documento se lee como documento; el color sólo enmarca.
 %
-% Familias : Source Serif 4 (lectura) + Source Sans 3 (estructura y metadatos).
-%            Una superfamilia, dos roles con contraste real (serif / sans).
+% Familias : IBM Plex Sans (texto) + IBM Plex Mono (fechas y datos).
+%            Sistema "ficha técnica", derivado del perfil del titular.
 % Escala   : razón fija 1,2 sobre cuerpo 10,5 pt → 8,75 · 10,5 · 12,6 · 15,1 · 21,8
 % Pesos    : Regular (cuerpo) · Semibold (estructura) · Bold (sólo el nombre)
 % Ritmo    : interlineado 14 pt = unidad base; espacios en múltiplos de 3,5 pt;
@@ -26,17 +26,19 @@
 \usepackage{fontspec}
 % Con la carpeta fonts/ se usan Source Serif 4 y Source Sans 3; sin ella, TeX Gyre
 % (incluida en TeX Live y Overleaf), para que el archivo compile en cualquier lado.
-\IfFileExists{fonts/SourceSerif4-Regular.otf}{%
-  \defaultfontfeatures{Path=fonts/,Extension=.otf,Numbers={Lining,Proportional}}
-  \setmainfont{SourceSerif4}[UprightFont=*-Regular,ItalicFont=*-It,BoldFont=*-Semibold,BoldItalicFont=*-SemiboldIt]
-  \setsansfont{SourceSans3}[UprightFont=*-Regular,ItalicFont=*-It,BoldFont=*-Semibold,BoldItalicFont=*-SemiboldIt]
-  \newfontfamily\namefont{SourceSans3-Bold}
-  \newfontfamily\datafont{SourceSans3-Regular}[Numbers={Lining,Monospaced}]
+% Con la carpeta fonts/ se usa IBM Plex (Sans para leer, Mono para fechas y datos);
+% sin ella, TeX Gyre Heros y Latin Modern Mono, incluidas en TeX Live y Overleaf.
+\IfFileExists{fonts/IBMPlexSans-Regular.ttf}{%
+  \defaultfontfeatures{Path=fonts/,Extension=.ttf}
+  \setmainfont{IBMPlexSans}[UprightFont=*-Regular,ItalicFont=*-Italic,BoldFont=*-SemiBold,BoldItalicFont=*-SemiBoldItalic]
+  \setsansfont{IBMPlexSans}[UprightFont=*-Regular,ItalicFont=*-Italic,BoldFont=*-SemiBold,BoldItalicFont=*-SemiBoldItalic]
+  \newfontfamily\namefont{IBMPlexSans-SemiBold}
+  \newfontfamily\datafont{IBMPlexMono-Regular}[Scale=0.95]
 }{%
-  \setmainfont{TeX Gyre Pagella}
+  \setmainfont{TeX Gyre Heros}
   \setsansfont{TeX Gyre Heros}
   \newfontfamily\namefont{TeX Gyre Heros}[UprightFont=*-Bold]
-  \newfontfamily\datafont{TeX Gyre Heros}[Numbers={Lining,Monospaced}]
+  \newfontfamily\datafont{Latin Modern Mono}
 }
 \usepackage[provide=*,spanish]{babel}
 \usepackage{microtype}
@@ -44,10 +46,10 @@
 \usepackage[hyphens]{url}
 \usepackage{hyperref}
 
-\definecolor{ink}{HTML}{1A222B}
-\definecolor{muted}{HTML}{5B646F}
-\definecolor{accent}{HTML}{275981}
-\definecolor{hair}{HTML}{D2D8DF}
+\definecolor{ink}{HTML}{192123}
+\definecolor{muted}{HTML}{5C6568}
+\definecolor{accent}{HTML}{006C6C}
+\definecolor{hair}{HTML}{D3DBDC}
 \color{ink}
 
 % --- escala (razón 1,2) ----------------------------------------------------
@@ -85,8 +87,8 @@
 % --- cabecera ---------------------------------------------------------------
 % QR de la web a la derecha si existe qr/qr_web.pdf; si no, cabecera a ancho completo.
 \newcommand{\cvheadertext}[3]{%
-  {\namefont\namesize\color{accent}#1\par}\vspace{5pt}%
-  {\subsize\itshape #2\par}\vspace{7pt}%
+  {\namefont\namesize\color{ink}#1\par}\vspace{5pt}%
+  {\subsize\color{muted}#2\par}\vspace{7pt}%
   {\sffamily\meta\color{muted}#3\par}}
 \newcommand{\cvheader}[3]{%
   \IfFileExists{qr/qr_web.pdf}{%
@@ -100,7 +102,7 @@
 % --- títulos de sección: filete arriba, aire arriba > aire abajo ------------
 \newcommand{\cvsection}[1]{\par\needspace{4\baselineskip}\vspace{17.5pt}%
   {\color{hair}\hrule height .5pt}\vspace{7pt}%
-  {\sffamily\bfseries\sectsize\color{accent}#1\par}\vspace{5pt}}
+  {\sffamily\bfseries\sectsize\color{ink}#1\par}\vspace{5pt}}
 
 % --- entrada: organización / cargo a la izquierda, fechas a la derecha ------
 % \entry{Título}{fechas}{lugar o detalle}
@@ -115,7 +117,7 @@
 
 % --- proyecto dentro de una viñeta -------------------------------------------
 \newcommand{\proj}[2]{{\sffamily\bfseries #1}\,{\datafont\meta\color{muted}#2}\enspace}
-\newcommand{\tools}[1]{\newline{\sffamily\meta\color{muted}#1}}
+\newcommand{\tools}[1]{\newline{\datafont\fontsize{8.25}{12}\selectfont\color{muted}#1}}
 
 % --- fila de competencias: etiqueta en línea, sin columnas -------------------
 \newcommand{\skill}[2]{{\sffamily\bfseries #1:} #2\par\vspace{3.5pt}}
