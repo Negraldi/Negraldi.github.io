@@ -310,3 +310,12 @@ h3 a:hover { color: var(--accent); }
   h2 { break-after: avoid; }
   a { color: inherit; text-decoration: none; }
 }
+
+/* --- iconos (Lucide, trazo uniforme) y selector de idioma ----------------- */
+.icon { width: 1.05em; height: 1.05em; vertical-align: -0.17em; margin-right: 0.45em; flex: none; color: var(--muted); }
+a .icon { color: currentColor; }
+.contact-list .label .icon { color: var(--muted); }
+.topbar .lang { display: flex; align-items: baseline; gap: var(--s2); padding-left: var(--s4); border-left: 1px solid var(--hair); font-family: var(--mono); font-size: var(--t-data); line-height: 1.4; }
+.topbar .lang a, .topbar .lang span { padding-block: var(--s1); }
+.topbar .lang [aria-current] { color: var(--ink); }
+.topbar .lang a { color: var(--muted); }

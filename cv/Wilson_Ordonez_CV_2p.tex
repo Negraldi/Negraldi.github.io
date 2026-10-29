@@ -1,6 +1,6 @@
 % CV de 2 páginas — versión para postulaciones. Compilar con XeLaTeX (dos pasadas).
 \documentclass[10pt]{article}
-% ===== estilo (incluido para que el archivo sea autónomo) =====
+% ===== estilo (incluido para que el archivo sea autónomo / style inlined) =====
 % ---------------------------------------------------------------------------
 % Sistema tipográfico compartido — CV Wilson Ordóñez Ramos
 % Rediseño con la skill Impeccable (typeset · layout · colorize · craft-floor),
@@ -40,7 +40,20 @@
   \newfontfamily\namefont{TeX Gyre Heros}[UprightFont=*-Bold]
   \newfontfamily\datafont{Latin Modern Mono}
 }
-\usepackage[provide=*,spanish]{babel}
+% Idioma: define \cvenglish antes de \input{estilo} para la versión en inglés.
+\ifdefined\cvenglish
+  \usepackage[american]{babel}
+  \newcommand{\cvfootertext}{Résumé · October 2026}
+  \newcommand{\cvqrfile}{qr/qr_web_en.pdf}
+  \newcommand{\cvqrurl}{https://negraldi.github.io/en/}
+  \newcommand{\cvqrlabel}{negraldi.github.io/en}
+\else
+  \usepackage[provide=*,spanish]{babel}
+  \newcommand{\cvfootertext}{Curriculum vitae · octubre 2026}
+  \newcommand{\cvqrfile}{qr/qr_web.pdf}
+  \newcommand{\cvqrurl}{https://negraldi.github.io/}
+  \newcommand{\cvqrlabel}{negraldi.github.io}
+\fi
 \usepackage{microtype}
 \usepackage{xcolor,enumitem,fancyhdr,lastpage,needspace,graphicx}
 \usepackage[hyphens]{url}
@@ -77,7 +90,7 @@
 % --- pie de página: texto plano, sin datos clave ---------------------------
 \pagestyle{fancy}\fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
-\fancyfoot[L]{\sffamily\meta\color{muted}Wilson Ordóñez Ramos · Curriculum vitae · octubre 2026}
+\fancyfoot[L]{\sffamily\meta\color{muted}Wilson Ordóñez Ramos · \cvfootertext}
 \fancyfoot[R]{\datafont\meta\color{muted}\thepage/\pageref*{LastPage}}
 
 % --- listas -----------------------------------------------------------------
@@ -91,11 +104,11 @@
   {\subsize\color{muted}#2\par}\vspace{7pt}%
   {\sffamily\meta\color{muted}#3\par}}
 \newcommand{\cvheader}[3]{%
-  \IfFileExists{qr/qr_web.pdf}{%
+  \IfFileExists{\cvqrfile}{%
     \noindent\begin{minipage}[b]{\dimexpr\linewidth-24mm\relax}\raggedright\cvheadertext{#1}{#2}{#3}\end{minipage}%
     \hfill\begin{minipage}[b]{20mm}\centering
-      \href{https://negraldi.github.io/}{\includegraphics[width=18mm]{qr/qr_web.pdf}}\par\vspace{2pt}
-      {\sffamily\fontsize{7}{8}\selectfont\color{muted}negraldi.github.io}\end{minipage}\par
+      \expandafter\href\expandafter{\cvqrurl}{\includegraphics[width=18mm]{\cvqrfile}}\par\vspace{2pt}
+      {\sffamily\fontsize{7}{8}\selectfont\color{muted}\cvqrlabel}\end{minipage}\par
   }{\cvheadertext{#1}{#2}{#3}\par}%
   \vspace{3.5pt}}
 
@@ -121,7 +134,7 @@
 
 % --- fila de competencias: etiqueta en línea, sin columnas -------------------
 \newcommand{\skill}[2]{{\sffamily\bfseries #1:} #2\par\vspace{3.5pt}}
-% ===== fin del estilo =====
+% ===== fin del estilo / end of style =====
 \hypersetup{pdftitle={Wilson Ordóñez Ramos — Científico de Datos — CV}}
 \begin{document}
 

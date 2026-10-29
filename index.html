@@ -11,6 +11,9 @@
 <meta property="og:description" content="Científico de datos en banca. Magíster en Ciencia de Datos, PUC Chile.">
 <meta property="og:url" content="https://negraldi.github.io/">
 <meta name="color-scheme" content="light dark">
+<link rel="alternate" hreflang="es" href="https://negraldi.github.io/">
+<link rel="alternate" hreflang="en" href="https://negraldi.github.io/en/">
+<link rel="alternate" hreflang="x-default" href="https://negraldi.github.io/">
 <link rel="canonical" href="https://negraldi.github.io/">
 <link rel="preload" href="fonts/IBMPlexSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/IBMPlexSans-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
@@ -36,6 +39,16 @@
 </script>
 </head>
 <body>
+<!-- Iconos: Lucide (ISC), trazo uniforme -->
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute">
+<symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /> <rect x="2" y="4" width="20" height="16" rx="2" /></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" /></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /> <circle cx="12" cy="10" r="3" /></symbol>
+<symbol id="i-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /> <rect width="4" height="12" x="2" y="9" /> <circle cx="4" cy="4" r="2" /></symbol>
+<symbol id="i-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" /> <path d="M9 18c-4.51 2-5-2-7-2" /></symbol>
+<symbol id="i-vcard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="5" height="5" x="3" y="3" rx="1" /> <rect width="5" height="5" x="16" y="3" rx="1" /> <rect width="5" height="5" x="3" y="16" rx="1" /> <path d="M21 16h-3a2 2 0 0 0-2 2v3" /> <path d="M21 21v.01" /> <path d="M12 7v3a2 2 0 0 1-2 2H7" /> <path d="M3 12h.01" /> <path d="M12 3h.01" /> <path d="M12 16v.01" /> <path d="M16 12h1" /> <path d="M21 12v.01" /> <path d="M12 21v-1" /></symbol>
+</svg>
 <a class="skip" href="#contenido">Saltar al contenido</a>
 
 <header class="topbar">
@@ -48,6 +61,7 @@
         <li><a href="#publicaciones">Publicaciones</a></li>
         <li><a href="cv.html">CV</a></li>
         <li><a href="#contacto">Contacto</a></li>
+        <li class="lang"><span aria-current="true" lang="es">ES</span><a href="en/" hreflang="en" lang="en" title="English version">EN</a></li>
       </ul>
     </nav>
   </div>
@@ -70,8 +84,8 @@
     </dl>
     <div class="actions">
       <a class="button" href="mailto:wilson.o563@gmail.com">Escribir un correo</a>
-      <a class="plain" href="https://www.linkedin.com/in/wilson-ordo%C3%B1ez-0905b961/">LinkedIn</a>
-      <a class="plain" href="tel:+593996616866">+593 99 661 6866</a>
+      <a class="plain" href="https://www.linkedin.com/in/wilson-ordo%C3%B1ez-0905b961/"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
+      <a class="plain" href="tel:+593996616866"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>+593 99 661 6866</a>
       <a class="plain" href="cv/Wilson_Ordonez_CV_2p.pdf" download>Descargar CV (PDF)</a>
     </div>
   </div>
@@ -315,13 +329,13 @@
     <h2 id="h-cont">Contacto</h2>
     <div class="contact-grid">
     <ul class="contact-list">
-      <li><span class="label">Correo</span><a href="mailto:wilson.o563@gmail.com">wilson.o563@gmail.com</a></li>
-      <li><span class="label">Teléfono</span><a href="tel:+593996616866">+593 99 661 6866</a></li>
-      <li><span class="label">WhatsApp</span><a href="https://wa.me/593996616866">Escribir por WhatsApp</a></li>
-      <li><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/wilson-ordo%C3%B1ez-0905b961/">linkedin.com/in/wilson-ordoñez-0905b961</a></li>
-      <li><span class="label">GitHub</span><a href="https://github.com/Negraldi">github.com/Negraldi</a></li>
-      <li><span class="label">Ubicación</span><span>Guayaquil, Ecuador</span></li>
-      <li><span class="label">Tarjeta</span><a href="qr/contacto.vcf" download="Wilson_Ordonez.vcf">Guardar en mis contactos (.vcf)</a></li>
+      <li><span class="label"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Correo</span><a href="mailto:wilson.o563@gmail.com">wilson.o563@gmail.com</a></li>
+      <li><span class="label"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Teléfono</span><a href="tel:+593996616866">+593 99 661 6866</a></li>
+      <li><span class="label"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</span><a href="https://wa.me/593996616866">Escribir por WhatsApp</a></li>
+      <li><span class="label"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</span><a href="https://www.linkedin.com/in/wilson-ordo%C3%B1ez-0905b961/">linkedin.com/in/wilson-ordoñez-0905b961</a></li>
+      <li><span class="label"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>GitHub</span><a href="https://github.com/Negraldi">github.com/Negraldi</a></li>
+      <li><span class="label"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Ubicación</span><span>Guayaquil, Ecuador</span></li>
+      <li><span class="label"><svg class="icon" aria-hidden="true"><use href="#i-vcard"/></svg>Tarjeta</span><a href="qr/contacto.vcf" download="Wilson_Ordonez.vcf">Guardar en mis contactos (.vcf)</a></li>
     </ul>
     <div class="qr-set">
       <figure class="qr">

@@ -1,0 +1,207 @@
+% Two-page résumé (US English). Compile with XeLaTeX (two passes).
+\documentclass[10pt]{article}
+\def\cvenglish{}
+% ===== estilo (incluido para que el archivo sea autónomo / style inlined) =====
+% ---------------------------------------------------------------------------
+% Sistema tipográfico compartido — CV Wilson Ordóñez Ramos
+% Rediseño con la skill Impeccable (typeset · layout · colorize · craft-floor),
+% modo "Read": el documento se lee como documento; el color sólo enmarca.
+%
+% Familias : IBM Plex Sans (texto) + IBM Plex Mono (fechas y datos).
+%            Sistema "ficha técnica", derivado del perfil del titular.
+% Escala   : razón fija 1,2 sobre cuerpo 10,5 pt → 8,75 · 10,5 · 12,6 · 15,1 · 21,8
+% Pesos    : Regular (cuerpo) · Semibold (estructura) · Bold (sólo el nombre)
+% Ritmo    : interlineado 14 pt = unidad base; espacios en múltiplos de 3,5 pt;
+%            más aire sobre cada título que debajo.
+% Color    : OKLCH, neutros tintados hacia el azul del acento (h≈250)
+%            tinta  oklch(.25 .02 250)  #1A222B  contraste 16,0:1
+%            atenuado oklch(.50 .02 250) #5B646F contraste  6,0:1
+%            acento oklch(.45 .085 245) #275981  contraste  7,4:1 (sólo nombre,
+%                   títulos de sección y enlaces)
+%            filete oklch(.88 .012 250) #D2D8DF  (no lleva texto)
+% Prohibido: etiquetas sobre títulos, numeración de secciones, íconos o glifos,
+%            barras de habilidades, bandas de color, bordes laterales, columnas.
+% Compilar : xelatex (dos pasadas). Fuentes en ./fonts
+% ---------------------------------------------------------------------------
+\usepackage[a4paper,left=24mm,right=24mm,top=20mm,bottom=22mm,footskip=11mm]{geometry}
+\usepackage{fontspec}
+% Con la carpeta fonts/ se usan Source Serif 4 y Source Sans 3; sin ella, TeX Gyre
+% (incluida en TeX Live y Overleaf), para que el archivo compile en cualquier lado.
+% Con la carpeta fonts/ se usa IBM Plex (Sans para leer, Mono para fechas y datos);
+% sin ella, TeX Gyre Heros y Latin Modern Mono, incluidas en TeX Live y Overleaf.
+\IfFileExists{fonts/IBMPlexSans-Regular.ttf}{%
+  \defaultfontfeatures{Path=fonts/,Extension=.ttf}
+  \setmainfont{IBMPlexSans}[UprightFont=*-Regular,ItalicFont=*-Italic,BoldFont=*-SemiBold,BoldItalicFont=*-SemiBoldItalic]
+  \setsansfont{IBMPlexSans}[UprightFont=*-Regular,ItalicFont=*-Italic,BoldFont=*-SemiBold,BoldItalicFont=*-SemiBoldItalic]
+  \newfontfamily\namefont{IBMPlexSans-SemiBold}
+  \newfontfamily\datafont{IBMPlexMono-Regular}[Scale=0.95]
+}{%
+  \setmainfont{TeX Gyre Heros}
+  \setsansfont{TeX Gyre Heros}
+  \newfontfamily\namefont{TeX Gyre Heros}[UprightFont=*-Bold]
+  \newfontfamily\datafont{Latin Modern Mono}
+}
+% Idioma: define \cvenglish antes de \input{estilo} para la versión en inglés.
+\ifdefined\cvenglish
+  \usepackage[american]{babel}
+  \newcommand{\cvfootertext}{Résumé · October 2026}
+  \newcommand{\cvqrfile}{qr/qr_web_en.pdf}
+  \newcommand{\cvqrurl}{https://negraldi.github.io/en/}
+  \newcommand{\cvqrlabel}{negraldi.github.io/en}
+\else
+  \usepackage[provide=*,spanish]{babel}
+  \newcommand{\cvfootertext}{Curriculum vitae · octubre 2026}
+  \newcommand{\cvqrfile}{qr/qr_web.pdf}
+  \newcommand{\cvqrurl}{https://negraldi.github.io/}
+  \newcommand{\cvqrlabel}{negraldi.github.io}
+\fi
+\usepackage{microtype}
+\usepackage{xcolor,enumitem,fancyhdr,lastpage,needspace,graphicx}
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+
+\definecolor{ink}{HTML}{192123}
+\definecolor{muted}{HTML}{5C6568}
+\definecolor{accent}{HTML}{006C6C}
+\definecolor{hair}{HTML}{D3DBDC}
+\color{ink}
+
+% --- escala (razón 1,2) ----------------------------------------------------
+\renewcommand{\normalsize}{\fontsize{10.5}{14}\selectfont}
+\newcommand{\meta}{\fontsize{8.75}{12}\selectfont}
+\newcommand{\sectsize}{\fontsize{12.6}{15}\selectfont}
+\newcommand{\subsize}{\fontsize{15.1}{18}\selectfont}
+\newcommand{\namesize}{\fontsize{21.8}{24}\selectfont}
+\normalsize
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\raggedright
+\hyphenpenalty=1000
+\exhyphenpenalty=1000
+\emergencystretch=2em
+\widowpenalty=10000
+\clubpenalty=10000
+
+\hypersetup{colorlinks=true,urlcolor=accent,linkcolor=accent,
+  pdfauthor={Wilson Abdón Ordóñez Ramos},
+  pdfkeywords={Científico de Datos, Data Scientist, Banca, Machine Learning, XGBoost, PySpark, Databricks, CLV, churn, Next Best Offer, NLP, embeddings, R, Python, SQL}}
+\urlstyle{same}
+
+% --- pie de página: texto plano, sin datos clave ---------------------------
+\pagestyle{fancy}\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\sffamily\meta\color{muted}Wilson Ordóñez Ramos · \cvfootertext}
+\fancyfoot[R]{\datafont\meta\color{muted}\thepage/\pageref*{LastPage}}
+
+% --- listas -----------------------------------------------------------------
+\setlist[itemize]{leftmargin=4.5mm,labelsep=2mm,label={\color{muted}\raisebox{.15ex}{\textbullet}},
+  topsep=3.5pt,itemsep=3.5pt,parsep=0pt,partopsep=0pt}
+
+% --- cabecera ---------------------------------------------------------------
+% QR de la web a la derecha si existe qr/qr_web.pdf; si no, cabecera a ancho completo.
+\newcommand{\cvheadertext}[3]{%
+  {\namefont\namesize\color{ink}#1\par}\vspace{5pt}%
+  {\subsize\color{muted}#2\par}\vspace{7pt}%
+  {\sffamily\meta\color{muted}#3\par}}
+\newcommand{\cvheader}[3]{%
+  \IfFileExists{\cvqrfile}{%
+    \noindent\begin{minipage}[b]{\dimexpr\linewidth-24mm\relax}\raggedright\cvheadertext{#1}{#2}{#3}\end{minipage}%
+    \hfill\begin{minipage}[b]{20mm}\centering
+      \expandafter\href\expandafter{\cvqrurl}{\includegraphics[width=18mm]{\cvqrfile}}\par\vspace{2pt}
+      {\sffamily\fontsize{7}{8}\selectfont\color{muted}\cvqrlabel}\end{minipage}\par
+  }{\cvheadertext{#1}{#2}{#3}\par}%
+  \vspace{3.5pt}}
+
+% --- títulos de sección: filete arriba, aire arriba > aire abajo ------------
+\newcommand{\cvsection}[1]{\par\needspace{4\baselineskip}\vspace{17.5pt}%
+  {\color{hair}\hrule height .5pt}\vspace{7pt}%
+  {\sffamily\bfseries\sectsize\color{ink}#1\par}\vspace{5pt}}
+
+% --- entrada: organización / cargo a la izquierda, fechas a la derecha ------
+% \entry{Título}{fechas}{lugar o detalle}
+\newcommand{\entry}[3]{\par\needspace{3\baselineskip}%
+  {\sffamily\bfseries #1}\hfill{\datafont\meta\color{muted}#2}\par
+  \ifx\relax#3\relax\else{\sffamily\meta\color{muted}#3\par}\fi\vspace{2pt}}
+\newcommand{\gap}{\par\vspace{7pt}}
+
+% --- línea de cargo en una progresión ---------------------------------------
+\newcommand{\role}[2]{{\sffamily #1}\hfill{\datafont\meta\color{muted}#2}\par}
+\newcommand{\position}[2]{{\sffamily #1}\enspace{\datafont\meta\color{muted}#2}\par}
+
+% --- proyecto dentro de una viñeta -------------------------------------------
+\newcommand{\proj}[2]{{\sffamily\bfseries #1}\,{\datafont\meta\color{muted}#2}\enspace}
+\newcommand{\tools}[1]{\newline{\datafont\fontsize{8.25}{12}\selectfont\color{muted}#1}}
+
+% --- fila de competencias: etiqueta en línea, sin columnas -------------------
+\newcommand{\skill}[2]{{\sffamily\bfseries #1:} #2\par\vspace{3.5pt}}
+% ===== fin del estilo / end of style =====
+\hypersetup{pdftitle={Wilson Ordóñez Ramos — Data Scientist — Résumé}}
+\begin{document}
+
+\cvheader{Wilson Abdón Ordóñez Ramos}
+  {Data Scientist in banking · Master's in Data Science, PUC Chile}
+  {Guayaquil, Ecuador \enspace·\enspace \href{mailto:wilson.o563@gmail.com}{wilson.o563@gmail.com} \enspace·\enspace \href{tel:+593996616866}{+593 99 661 6866}\par\vspace{2pt}\href{https://www.linkedin.com/in/wilson-ordo\%C3\%B1ez-0905b961/}{\nolinkurl{linkedin.com/in/wilson-ordoñez-0905b961}} \enspace·\enspace \href{https://github.com/Negraldi}{github.com/Negraldi} \enspace·\enspace \href{https://negraldi.github.io/en/}{negraldi.github.io/en}}
+
+\cvsection{Summary}
+Data scientist at Banco Guayaquil, where I have worked in retail banking analytics since 2018. I build models for churn and retention, customer lifetime value (CLV), next best offer, transaction network analysis, and natural language processing with embeddings. I work daily with Python, R, SQL, PySpark, and Databricks. Master's in Data Science from Pontificia Universidad Católica de Chile (2026), engineering degree in Statistics and Computing from ESPOL, and co-author of a paper in \textit{ACS Omega}.
+
+\cvsection{Experience}
+\entry{Banco Guayaquil S.A.}{Nov 2018 – present}{Guayaquil, Ecuador · Data Analytics, Retail Banking Tribe}
+\position{Data Scientist}{Jan 2025 – present}
+\position{Senior Officer}{Apr 2023 – Dec 2024}
+\position{Officer}{Nov 2018 – Mar 2023}
+\begin{itemize}
+\item \proj{Primary Bank Model}{2025}Designed and built a model that identifies customers who use the bank as their primary financial institution, combining factor analysis, XGBoost, feature engineering on transaction data, and centrality in money-transfer networks.
+  \tools{PySpark · Databricks · Hive · XGBoost · NetworkX · igraph}
+\item \proj{Sentiment analysis of customer communications}{2025}Built an NLP pipeline on customer messages with OpenAI embeddings and dimensionality reduction (PCA, ICA) to classify messages and detect patterns.
+  \tools{Python · R · OpenAI API}
+\item \proj{Return on Experience}{2025}Developed econometric models that measure how profitability (ROA, ROE) responds to CSAT and NPS: a framework to estimate the return on digital experience improvements.
+\item \proj{Customer Lifetime Value}{2023}Built customer value estimation across deposits and loans: survival analysis for customer lifetime and regression to project financial behavior.
+  \tools{R · survival · earth · XGBoost · Sparklyr}
+\item \proj{Next Best Offer from product adoption paths}{2023}Modeled recommendations from product adoption patterns and acquisition sequences, for cross-selling and retention campaigns.
+\item \proj{Multi-product churn}{2022}Predicted churn in insurance, deposits, and other products with GLMNET and XGBoost; spending profiles and customer segmentation.
+  \tools{R · GLMNET · XGBoost · Sparklyr}
+\item Corporate deposit forecasting with transaction data and graphs; demand and sustainability of neighborhood banking agents (Bancos de Barrio); data collection through web scraping and APIs; automation of Risk department processes.
+\end{itemize}
+
+\newpage
+\cvsection{Education}
+\entry{Master's in Data Science}{conferred Apr 2026}{Pontificia Universidad Católica de Chile · Magíster en Ciencia de Datos}
+Big data architecture (Spark, Hadoop), machine learning and deep learning, Bayesian methods, AI ethics, and model explainability.
+
+\gap
+\entry{Engineering degree in Statistics and Computing}{2012 – 2017}{Escuela Superior Politécnica del Litoral (ESPOL), Ecuador · Ingeniero en Estadística Informática}
+Thesis (in Spanish): structure of Ecuador's income distribution with robust quantile regression (\href{https://www.dspace.espol.edu.ec/retrieve/99409/D-CD102601.pdf}{ESPOL repository}).
+
+\cvsection{Research and teaching}
+\entry{ESPOL — Research Assistant}{May – Oct 2021}{Escuela Superior Politécnica del Litoral, Guayaquil}
+Methodology, validation, and formal analysis for the study published in \textit{ACS Omega} (2023).
+
+\gap
+\entry{ESPOL — Teaching Technician}{Jul 2017 – Sep 2018}{Faculty of Natural Sciences and Mathematics}
+Forecasting of student demand and course pass rates (XGBoost, time series); pre/post analysis of physics learning (FCI, RMSS).
+
+\gap
+\entry{Early experience}{2014 – 2016}{}
+Statistics assistantships at ESPOL (Graduate School and Center for Statistical Studies and Research); internships at INAMHI (National Institute of Meteorology and Hydrology) and Hospital León Becerra.
+
+\cvsection{Publication}
+Bustos, D.; Galarza, C.; \textbf{Ordoñez, W.}; Brauchi, S.; Benso, B. (2023). Cost-Effective Pipeline for a Rational Design and Selection of Capsaicin Analogues Targeting TRPV1 Channels. \textit{ACS Omega}, 8(13), 11736–11749. \href{https://doi.org/10.1021/acsomega.2c05672}{doi.org/10.1021/acsomega.2c05672}
+\par\vspace{3.5pt}
+{\sffamily\meta\color{muted}Contribution (CRediT): methodology, validation, formal analysis, review and editing.}
+
+\cvsection{Skills, certification, and languages}
+\skill{Programming}{Python, R (advanced), SQL.}
+\skill{Big data}{Apache Spark, PySpark, Sparklyr, Databricks, Hive, Hadoop.}
+\skill{Modeling}{XGBoost, GLMNET, regression and quantile regression, survival analysis, time series, segmentation, factor analysis, graph analytics.}
+\skill{NLP and generative AI}{OpenAI embeddings and API, sentiment analysis, PCA and ICA; AI-assisted development with Claude and Codex, prompt design; working knowledge of agents, skills, and MCP.}
+\skill{Visualization}{Power BI, Tableau, R Shiny, ggplot2, Matplotlib, Plotly.}
+\skill{Data and processes}{SQL Server, PostgreSQL, MySQL, MongoDB, ETL, Git; Scrum.}
+\skill{Certification}{SCRUM Master Professional Certificate (SMPC), Certiprof, 2019.}
+\skill{Languages}{Spanish (native) · English (B1, CEFR).}
+
+\vspace{10.5pt}
+{\sffamily\meta\color{muted}Professional and academic references available upon request.}
+
+\end{document}

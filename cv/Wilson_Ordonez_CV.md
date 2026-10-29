@@ -4,7 +4,7 @@
 
 Guayaquil, Ecuador · [wilson.o563@gmail.com](mailto:wilson.o563@gmail.com) · [+593 99 661 6866](tel:+593996616866) · [linkedin.com/in/wilson-ordoñez-0905b961](https://www.linkedin.com/in/wilson-ordo%C3%B1ez-0905b961/) · [github.com/Negraldi](https://github.com/Negraldi) · [negraldi.github.io](https://negraldi.github.io/)
 
-<img src="https://negraldi.github.io/qr/qr_web.png" alt="QR a negraldi.github.io" width="110">
+<img src="https://negraldi.github.io/qr/qr_web.png" alt="QR" width="110">
 
 ## Perfil
 
@@ -187,4 +187,4 @@ Español nativo · Inglés B1 (Marco Común Europeo de Referencia). Centro Ecuat
 
 ---
 
-*Curriculum vitae · actualizado en octubre de 2026 · [negraldi.github.io](https://negraldi.github.io/)*
+*Curriculum vitae · actualizado en octubre de 2026 · [negraldi.github.io/](https://negraldi.github.io/)*
