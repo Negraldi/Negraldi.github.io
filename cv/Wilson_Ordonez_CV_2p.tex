@@ -40,7 +40,7 @@
 }
 \usepackage[provide=*,spanish]{babel}
 \usepackage{microtype}
-\usepackage{xcolor,enumitem,fancyhdr,lastpage,needspace}
+\usepackage{xcolor,enumitem,fancyhdr,lastpage,needspace,graphicx}
 \usepackage[hyphens]{url}
 \usepackage{hyperref}
 
@@ -83,10 +83,19 @@
   topsep=3.5pt,itemsep=3.5pt,parsep=0pt,partopsep=0pt}
 
 % --- cabecera ---------------------------------------------------------------
-\newcommand{\cvheader}[3]{%
+% QR de la web a la derecha si existe qr/qr_web.pdf; si no, cabecera a ancho completo.
+\newcommand{\cvheadertext}[3]{%
   {\namefont\namesize\color{accent}#1\par}\vspace{5pt}%
   {\subsize\itshape #2\par}\vspace{7pt}%
-  {\sffamily\meta\color{muted}#3\par}\vspace{3.5pt}}
+  {\sffamily\meta\color{muted}#3\par}}
+\newcommand{\cvheader}[3]{%
+  \IfFileExists{qr/qr_web.pdf}{%
+    \noindent\begin{minipage}[b]{\dimexpr\linewidth-24mm\relax}\raggedright\cvheadertext{#1}{#2}{#3}\end{minipage}%
+    \hfill\begin{minipage}[b]{20mm}\centering
+      \href{https://negraldi.github.io/}{\includegraphics[width=18mm]{qr/qr_web.pdf}}\par\vspace{2pt}
+      {\sffamily\fontsize{7}{8}\selectfont\color{muted}negraldi.github.io}\end{minipage}\par
+  }{\cvheadertext{#1}{#2}{#3}\par}%
+  \vspace{3.5pt}}
 
 % --- títulos de sección: filete arriba, aire arriba > aire abajo ------------
 \newcommand{\cvsection}[1]{\par\needspace{4\baselineskip}\vspace{17.5pt}%

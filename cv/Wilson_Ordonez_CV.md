@@ -4,6 +4,8 @@
 
 Guayaquil, Ecuador · [wilson.o563@gmail.com](mailto:wilson.o563@gmail.com) · [+593 99 661 6866](tel:+593996616866) · [linkedin.com/in/wilson-ordoñez-0905b961](https://www.linkedin.com/in/wilson-ordo%C3%B1ez-0905b961/) · [github.com/Negraldi](https://github.com/Negraldi) · [negraldi.github.io](https://negraldi.github.io/)
 
+<img src="https://negraldi.github.io/qr/qr_web.png" alt="QR a negraldi.github.io" width="110">
+
 ## Perfil
 
 Científico de Datos en Banco Guayaquil, donde trabajo desde 2018 en analítica de banca de personas. Construyo modelos de deserción y retención, valor de vida del cliente (CLV), next best offer, análisis de redes transaccionales y procesamiento de lenguaje natural con embeddings. Trabajo a diario con Python, R, SQL, PySpark y Databricks. Magíster en Ciencia de Datos por la Pontificia Universidad Católica de Chile (2026), Ingeniero en Estadística Informática por ESPOL y coautor de un artículo en ACS Omega.

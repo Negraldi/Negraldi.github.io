@@ -266,3 +266,17 @@ h3 a:hover { color: var(--accent); }
 .register ul.roles li { padding-left: 0; margin-bottom: var(--s3); }
 .register ul.roles li b { font: 600 var(--t-body)/1.5 var(--sans); }
 .register ul.roles li .when { margin-left: var(--s2); }
+
+/* --- códigos QR: siempre sobre placa blanca para que se puedan escanear ------ */
+.contact-grid { display: grid; gap: var(--s10) var(--s16); align-items: start; }
+@media (min-width: 60rem) { .contact-grid { grid-template-columns: minmax(0, var(--measure)) auto; } }
+.qr-set { display: flex; flex-wrap: wrap; gap: var(--s6) var(--s8); }
+.qr { margin: 0; width: 12rem; }
+.qr img {
+  display: block; width: 12rem; height: auto;
+  background: #fff; padding: var(--s2);
+  border: 1px solid var(--hair); border-radius: 6px;
+}
+.qr figcaption { font: 400 var(--t-meta)/1.5 var(--sans); color: var(--muted); margin-top: var(--s2); }
+.qr figcaption .links { margin-top: var(--s1); }
+@media print { .qr-set { display: flex; } .qr figcaption .links { display: none; } }
