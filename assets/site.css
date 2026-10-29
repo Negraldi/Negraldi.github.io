@@ -1,0 +1,268 @@
+/* ==========================================================================
+   negraldi.github.io — sistema de diseño (skill Impeccable)
+   Modo: Persuade en la portada (la acción es contactar), Read en el CV.
+   Mundo: un registro estadístico. Su gesto propio es la columna de fechas en
+   cifras tabulares a la izquierda, como un libro de registro; todo lo demás es
+   tipografía, espacio y un solo acento.
+   Familias: Source Serif 4 (lectura, voz) · Source Sans 3 (estructura, datos).
+   Escala 1,25 sobre 17 px: 13,6 · 17 · 21,25 · 26,6 · 41,5
+   Color OKLCH, neutros tintados hacia el azul del acento (h 245–250).
+   Sin etiquetas sobre títulos, sin tarjetas, sin íconos-glifo, sin degradados.
+   ========================================================================== */
+
+@font-face { font-family: "Source Serif 4"; src: url("../fonts/SourceSerif4-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Source Serif 4"; src: url("../fonts/SourceSerif4-It.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Source Serif 4"; src: url("../fonts/SourceSerif4-Semibold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Source Sans 3"; src: url("../fonts/SourceSans3-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Source Sans 3"; src: url("../fonts/SourceSans3-Semibold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Source Sans 3"; src: url("../fonts/SourceSans3-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+
+:root {
+  --bg:      oklch(0.985 0.004 250);
+  --ground:  oklch(0.955 0.012 250);
+  --ink:     oklch(0.25 0.02 250);
+  --muted:   oklch(0.50 0.02 250);
+  --accent:  oklch(0.45 0.085 245);
+  --accent-ink: oklch(0.985 0.004 250);
+  --accent-hover: oklch(0.38 0.08 245);
+  --hair:    oklch(0.88 0.012 250);
+
+  --serif: "Source Serif 4", "Source Serif Pro", Georgia, serif;
+  --sans:  "Source Sans 3", "Source Sans Pro", "Segoe UI", system-ui, sans-serif;
+
+  --t-meta: 0.85rem;
+  --t-body: 1.0625rem;
+  --t-sect: 1.328rem;
+  --t-lead: 1.66rem;
+  --t-name: 2.594rem;
+
+  --s1: 0.25rem; --s2: 0.5rem; --s3: 0.75rem; --s4: 1rem; --s5: 1.25rem;
+  --s6: 1.5rem;  --s8: 2rem;   --s10: 2.5rem; --s12: 3rem; --s16: 4rem; --s24: 6rem;
+
+  --wide: 64rem;
+  --gutter: 9.5rem;
+  --measure: 40rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:      oklch(0.19 0.012 250);
+    --ground:  oklch(0.225 0.016 250);
+    --ink:     oklch(0.93 0.008 250);
+    --muted:   oklch(0.74 0.015 250);
+    --accent:  oklch(0.80 0.075 240);
+    --accent-ink: oklch(0.19 0.012 250);
+    --accent-hover: oklch(0.87 0.06 240);
+    --hair:    oklch(0.33 0.015 250);
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--s16);
+  scrollbar-color: var(--hair) var(--bg);
+  accent-color: var(--accent);
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 var(--t-body)/1.6 var(--serif);
+  text-rendering: optimizeLegibility;
+}
+::selection { background: var(--accent); color: var(--accent-ink); }
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in oklch, var(--accent) 40%, transparent);
+  transition: text-decoration-color 160ms cubic-bezier(.2,.7,.2,1);
+}
+a:hover { text-decoration-color: currentColor; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+p { margin: 0 0 var(--s3); text-wrap: pretty; }
+h1, h2, h3 { text-wrap: balance; }
+i, em { font-style: italic; }
+
+.skip {
+  position: absolute; left: var(--s4); top: -4rem; z-index: 10;
+  font: 600 var(--t-meta)/1 var(--sans);
+  background: var(--ink); color: var(--bg); padding: var(--s2) var(--s3);
+}
+.skip:focus { top: var(--s4); }
+
+.wrap { max-width: var(--wide); margin: 0 auto; padding-inline: var(--s5); }
+@media (min-width: 48rem) { .wrap { padding-inline: var(--s10); } }
+
+/* --- barra superior ---------------------------------------------------------- */
+.topbar {
+  position: sticky; top: 0; z-index: 5;
+  background: color-mix(in oklch, var(--bg) 92%, transparent);
+  border-bottom: 1px solid var(--hair);
+  font: 400 var(--t-meta)/1.4 var(--sans);
+}
+@supports (backdrop-filter: blur(1px)) {
+  .topbar { backdrop-filter: saturate(1.2) blur(8px); }
+}
+.topbar .wrap {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+  gap: var(--s2) var(--s6); padding-block: var(--s3);
+}
+.brand { font: 600 var(--t-body)/1.2 var(--sans); color: var(--ink); text-decoration: none; }
+.brand:hover { color: var(--accent); }
+.topbar nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s1) var(--s5); }
+.topbar nav a { color: var(--muted); text-decoration: none; padding-block: var(--s1); }
+.topbar nav a:hover, .topbar nav a[aria-current="page"] { color: var(--accent); }
+
+/* --- portada ------------------------------------------------------------------- */
+.intro { padding-block: var(--s16) var(--s12); }
+@media (min-width: 48rem) { .intro { padding-block: var(--s24) var(--s16); } }
+.intro h1 {
+  font: 700 var(--t-name)/1.05 var(--sans);
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  margin: 0 0 var(--s6);
+  max-width: 18ch;
+}
+.statement {
+  font: 400 var(--t-lead)/1.35 var(--serif);
+  max-width: 30ch;
+  margin: 0 0 var(--s5);
+}
+@media (min-width: 48rem) { .statement { max-width: 34ch; } }
+.statement-sub { max-width: var(--measure); color: var(--ink); margin-bottom: var(--s8); }
+
+.actions {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: var(--s3) var(--s6);
+  font: 400 var(--t-body)/1.4 var(--sans);
+}
+.button {
+  display: inline-block;
+  font: 600 var(--t-body)/1 var(--sans);
+  background: var(--accent); color: var(--accent-ink);
+  padding: var(--s3) var(--s5);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 160ms cubic-bezier(.2,.7,.2,1);
+}
+.button:hover { background: var(--accent-hover); color: var(--accent-ink); }
+.actions .plain { white-space: nowrap; }
+
+/* --- secciones ------------------------------------------------------------------ */
+.section { padding-block: var(--s12); border-top: 1px solid var(--hair); }
+@media (min-width: 48rem) { .section { padding-block: var(--s16); } }
+.section > .wrap > h2, .section-head h2 {
+  font: 600 var(--t-sect)/1.2 var(--sans);
+  color: var(--accent);
+  margin: 0 0 var(--s8);
+}
+.section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--s2) var(--s6); margin-bottom: var(--s8); }
+.section-head h2 { margin: 0; }
+.section-head a { font: 400 var(--t-meta)/1.4 var(--sans); }
+.lede-note { font: 400 var(--t-meta)/1.5 var(--sans); color: var(--muted); max-width: var(--measure); margin: calc(-1 * var(--s5)) 0 var(--s8); }
+
+h3 { font: 600 var(--t-body)/1.35 var(--sans); margin: 0; }
+h3 a { color: var(--ink); text-decoration-color: color-mix(in oklch, var(--ink) 30%, transparent); }
+h3 a:hover { color: var(--accent); }
+.sub { font: 400 var(--t-meta)/1.5 var(--sans); color: var(--muted); margin: var(--s1) 0 var(--s2); }
+.sub a { color: var(--muted); }
+.sub a:hover { color: var(--accent); }
+
+/* --- el registro: fechas en la columna izquierda --------------------------------- */
+.register { list-style: none; margin: 0; padding: 0; }
+.register > li {
+  display: grid; gap: var(--s1);
+  padding-block: var(--s5);
+  border-top: 1px solid var(--hair);
+}
+.register > li:first-child { border-top: 0; padding-top: 0; }
+@media (min-width: 48rem) {
+  .register > li { grid-template-columns: var(--gutter) minmax(0, var(--measure)); column-gap: var(--s8); }
+}
+.when {
+  font: 400 var(--t-meta)/1.6 var(--sans);
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--muted);
+  white-space: nowrap;
+}
+@media (min-width: 48rem) { .register .when { padding-top: 0.1rem; } }
+.register p:last-child { margin-bottom: 0; }
+.register ul { margin: var(--s2) 0 0; padding-left: 1.1rem; list-style: disc; }
+.register ul li { margin-bottom: var(--s1); padding-left: var(--s1); }
+.register ul li::marker { color: var(--muted); }
+
+.stack, .links {
+  font: 400 var(--t-meta)/1.6 var(--sans);
+  color: var(--muted);
+  margin: var(--s2) 0 0;
+}
+.links { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s4); }
+.links a { white-space: nowrap; }
+
+.subhead {
+  font: 600 var(--t-meta)/1.4 var(--sans);
+  color: var(--muted);
+  margin: var(--s12) 0 var(--s4);
+}
+.subhead:first-of-type { margin-top: 0; }
+
+/* --- competencias ------------------------------------------------------------- */
+.skills { display: grid; gap: var(--s4) var(--s10); margin: 0; }
+@media (min-width: 48rem) { .skills { grid-template-columns: 1fr 1fr; } }
+.skills div { margin: 0; }
+.skills dt { font: 600 var(--t-body)/1.4 var(--sans); margin-bottom: var(--s1); }
+.skills dd { margin: 0; }
+
+/* --- contacto ------------------------------------------------------------------- */
+.contact-band { background: var(--ground); }
+.contact-list { list-style: none; margin: 0; padding: 0; max-width: var(--measure); }
+.contact-list li {
+  display: grid; gap: 0 var(--s8);
+  padding-block: var(--s3);
+  border-top: 1px solid var(--hair);
+  font: 400 var(--t-body)/1.5 var(--sans);
+}
+.contact-list li:first-child { border-top: 0; }
+@media (min-width: 40rem) { .contact-list li { grid-template-columns: 8rem 1fr; } }
+.contact-list .label { color: var(--muted); font-size: var(--t-meta); padding-top: 0.15rem; }
+
+/* --- referencias ----------------------------------------------------------------- */
+.refs { display: grid; gap: var(--s5) var(--s10); }
+@media (min-width: 48rem) { .refs { grid-template-columns: 1fr 1fr; } }
+.refs p { margin: 0; font: 400 var(--t-meta)/1.6 var(--sans); color: var(--muted); }
+.refs .name { display: inline-block; margin-bottom: 2px; font: 600 var(--t-body)/1.4 var(--sans); color: var(--ink); }
+
+/* --- pie --------------------------------------------------------------------------- */
+.footer { border-top: 1px solid var(--hair); padding-block: var(--s8) var(--s12); font: 400 var(--t-meta)/1.6 var(--sans); color: var(--muted); }
+.footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s2) var(--s6); }
+.footer a { color: var(--muted); }
+.footer a:hover { color: var(--accent); }
+
+/* --- página CV --------------------------------------------------------------------- */
+.cv-head { padding-block: var(--s16) var(--s8); }
+.cv-head h1 { font: 700 var(--t-name)/1.05 var(--sans); letter-spacing: -0.02em; color: var(--accent); margin: 0 0 var(--s3); }
+.cv-head .role { font: italic 400 var(--t-lead)/1.3 var(--serif); margin: 0 0 var(--s6); max-width: 30ch; }
+
+/* --- impresión ----------------------------------------------------------------------- */
+@media print {
+  :root { --bg: #fff; --ground: #fff; --ink: #1A222B; --muted: #5B646F; --accent: #275981; --hair: #D2D8DF; }
+  @page { size: A4; margin: 16mm 18mm; }
+  body { font-size: 10.5pt; }
+  .topbar, .skip, .actions, .footer { display: none; }
+  .intro, .cv-head { padding-block: 0 8mm; }
+  .section { padding-block: 6mm; break-inside: auto; }
+  .register > li, .refs p { break-inside: avoid; }
+  h2 { break-after: avoid; }
+  a { color: inherit; text-decoration: none; }
+}
+
+.note { font: 400 var(--t-meta)/1.6 var(--sans); color: var(--muted); margin: 0; }
+.register h3 + p:not(.sub) { margin-top: var(--s1); }
+.register ul.roles { list-style: none; padding-left: 0; }
+.register ul.roles li { padding-left: 0; margin-bottom: var(--s3); }
+.register ul.roles li b { font: 600 var(--t-body)/1.5 var(--sans); }
+.register ul.roles li .when { margin-left: var(--s2); }

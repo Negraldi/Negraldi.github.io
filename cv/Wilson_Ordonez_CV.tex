@@ -1,0 +1,252 @@
+% CV completo — versión de respaldo (concursos académicos, sector público, solicitud expresa).
+% Compilar con XeLaTeX (dos pasadas).
+\documentclass[10pt]{article}
+% ===== estilo (incluido para que el archivo sea autónomo) =====
+% ---------------------------------------------------------------------------
+% Sistema tipográfico compartido — CV Wilson Ordóñez Ramos
+% Rediseño con la skill Impeccable (typeset · layout · colorize · craft-floor),
+% modo "Read": el documento se lee como documento; el color sólo enmarca.
+%
+% Familias : Source Serif 4 (lectura) + Source Sans 3 (estructura y metadatos).
+%            Una superfamilia, dos roles con contraste real (serif / sans).
+% Escala   : razón fija 1,2 sobre cuerpo 10,5 pt → 8,75 · 10,5 · 12,6 · 15,1 · 21,8
+% Pesos    : Regular (cuerpo) · Semibold (estructura) · Bold (sólo el nombre)
+% Ritmo    : interlineado 14 pt = unidad base; espacios en múltiplos de 3,5 pt;
+%            más aire sobre cada título que debajo.
+% Color    : OKLCH, neutros tintados hacia el azul del acento (h≈250)
+%            tinta  oklch(.25 .02 250)  #1A222B  contraste 16,0:1
+%            atenuado oklch(.50 .02 250) #5B646F contraste  6,0:1
+%            acento oklch(.45 .085 245) #275981  contraste  7,4:1 (sólo nombre,
+%                   títulos de sección y enlaces)
+%            filete oklch(.88 .012 250) #D2D8DF  (no lleva texto)
+% Prohibido: etiquetas sobre títulos, numeración de secciones, íconos o glifos,
+%            barras de habilidades, bandas de color, bordes laterales, columnas.
+% Compilar : xelatex (dos pasadas). Fuentes en ./fonts
+% ---------------------------------------------------------------------------
+\usepackage[a4paper,left=24mm,right=24mm,top=20mm,bottom=22mm,footskip=11mm]{geometry}
+\usepackage{fontspec}
+% Con la carpeta fonts/ se usan Source Serif 4 y Source Sans 3; sin ella, TeX Gyre
+% (incluida en TeX Live y Overleaf), para que el archivo compile en cualquier lado.
+\IfFileExists{fonts/SourceSerif4-Regular.otf}{%
+  \defaultfontfeatures{Path=fonts/,Extension=.otf,Numbers={Lining,Proportional}}
+  \setmainfont{SourceSerif4}[UprightFont=*-Regular,ItalicFont=*-It,BoldFont=*-Semibold,BoldItalicFont=*-SemiboldIt]
+  \setsansfont{SourceSans3}[UprightFont=*-Regular,ItalicFont=*-It,BoldFont=*-Semibold,BoldItalicFont=*-SemiboldIt]
+  \newfontfamily\namefont{SourceSans3-Bold}
+  \newfontfamily\datafont{SourceSans3-Regular}[Numbers={Lining,Monospaced}]
+}{%
+  \setmainfont{TeX Gyre Pagella}
+  \setsansfont{TeX Gyre Heros}
+  \newfontfamily\namefont{TeX Gyre Heros}[UprightFont=*-Bold]
+  \newfontfamily\datafont{TeX Gyre Heros}[Numbers={Lining,Monospaced}]
+}
+\usepackage[provide=*,spanish]{babel}
+\usepackage{microtype}
+\usepackage{xcolor,enumitem,fancyhdr,lastpage,needspace}
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+
+\definecolor{ink}{HTML}{1A222B}
+\definecolor{muted}{HTML}{5B646F}
+\definecolor{accent}{HTML}{275981}
+\definecolor{hair}{HTML}{D2D8DF}
+\color{ink}
+
+% --- escala (razón 1,2) ----------------------------------------------------
+\renewcommand{\normalsize}{\fontsize{10.5}{14}\selectfont}
+\newcommand{\meta}{\fontsize{8.75}{12}\selectfont}
+\newcommand{\sectsize}{\fontsize{12.6}{15}\selectfont}
+\newcommand{\subsize}{\fontsize{15.1}{18}\selectfont}
+\newcommand{\namesize}{\fontsize{21.8}{24}\selectfont}
+\normalsize
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\raggedright
+\hyphenpenalty=1000
+\exhyphenpenalty=1000
+\emergencystretch=2em
+\widowpenalty=10000
+\clubpenalty=10000
+
+\hypersetup{colorlinks=true,urlcolor=accent,linkcolor=accent,
+  pdfauthor={Wilson Abdón Ordóñez Ramos},
+  pdfkeywords={Científico de Datos, Data Scientist, Banca, Machine Learning, XGBoost, PySpark, Databricks, CLV, churn, Next Best Offer, NLP, embeddings, R, Python, SQL}}
+\urlstyle{same}
+
+% --- pie de página: texto plano, sin datos clave ---------------------------
+\pagestyle{fancy}\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\sffamily\meta\color{muted}Wilson Ordóñez Ramos · Curriculum vitae · octubre 2026}
+\fancyfoot[R]{\datafont\meta\color{muted}\thepage/\pageref*{LastPage}}
+
+% --- listas -----------------------------------------------------------------
+\setlist[itemize]{leftmargin=4.5mm,labelsep=2mm,label={\color{muted}\raisebox{.15ex}{\textbullet}},
+  topsep=3.5pt,itemsep=3.5pt,parsep=0pt,partopsep=0pt}
+
+% --- cabecera ---------------------------------------------------------------
+\newcommand{\cvheader}[3]{%
+  {\namefont\namesize\color{accent}#1\par}\vspace{5pt}%
+  {\subsize\itshape #2\par}\vspace{7pt}%
+  {\sffamily\meta\color{muted}#3\par}\vspace{3.5pt}}
+
+% --- títulos de sección: filete arriba, aire arriba > aire abajo ------------
+\newcommand{\cvsection}[1]{\par\needspace{4\baselineskip}\vspace{17.5pt}%
+  {\color{hair}\hrule height .5pt}\vspace{7pt}%
+  {\sffamily\bfseries\sectsize\color{accent}#1\par}\vspace{5pt}}
+
+% --- entrada: organización / cargo a la izquierda, fechas a la derecha ------
+% \entry{Título}{fechas}{lugar o detalle}
+\newcommand{\entry}[3]{\par\needspace{3\baselineskip}%
+  {\sffamily\bfseries #1}\hfill{\datafont\meta\color{muted}#2}\par
+  \ifx\relax#3\relax\else{\sffamily\meta\color{muted}#3\par}\fi\vspace{2pt}}
+\newcommand{\gap}{\par\vspace{7pt}}
+
+% --- línea de cargo en una progresión ---------------------------------------
+\newcommand{\role}[2]{{\sffamily #1}\hfill{\datafont\meta\color{muted}#2}\par}
+\newcommand{\position}[2]{{\sffamily #1}\enspace{\datafont\meta\color{muted}#2}\par}
+
+% --- proyecto dentro de una viñeta -------------------------------------------
+\newcommand{\proj}[2]{{\sffamily\bfseries #1}\,{\datafont\meta\color{muted}#2}\enspace}
+\newcommand{\tools}[1]{\newline{\sffamily\meta\color{muted}#1}}
+
+% --- fila de competencias: etiqueta en línea, sin columnas -------------------
+\newcommand{\skill}[2]{{\sffamily\bfseries #1:} #2\par\vspace{3.5pt}}
+% ===== fin del estilo =====
+\hypersetup{pdftitle={Wilson Ordóñez Ramos — Científico de Datos — CV completo}}
+\begin{document}
+
+\cvheader{Wilson Abdón Ordóñez Ramos}
+  {Científico de Datos en banca · Magíster en Ciencia de Datos, PUC Chile}
+  {Guayaquil, Ecuador \enspace·\enspace \href{mailto:wilson.o563@gmail.com}{wilson.o563@gmail.com} \enspace·\enspace \href{tel:+593996616866}{+593 99 661 6866}\par\vspace{2pt}\href{https://www.linkedin.com/in/wilson-ordo\%C3\%B1ez-0905b961/}{\nolinkurl{linkedin.com/in/wilson-ordoñez-0905b961}} \enspace·\enspace \href{https://github.com/Negraldi}{github.com/Negraldi} \enspace·\enspace \href{https://negraldi.github.io/}{negraldi.github.io}}
+
+\cvsection{Perfil}
+Científico de Datos en Banco Guayaquil, donde trabajo desde 2018 en analítica de banca de personas. Construyo modelos de deserción y retención, valor de vida del cliente (CLV), \textit{next best offer}, análisis de redes transaccionales y procesamiento de lenguaje natural con \textit{embeddings}. Trabajo a diario con Python, R, SQL, PySpark y Databricks. Magíster en Ciencia de Datos por la Pontificia Universidad Católica de Chile (2026), Ingeniero en Estadística Informática por ESPOL y coautor de un artículo en \textit{ACS Omega}. Antes de la banca, fui técnico docente y ayudante de investigación en ESPOL.
+
+\cvsection{Experiencia profesional}
+\entry{Banco Guayaquil S.A.}{nov. 2018 – actualidad}{Guayaquil, Ecuador · Analítica de Datos, Tribu Banca Personas}
+\position{Científico de Datos}{ene. 2025 – actualidad}
+\position{Oficial Senior}{abr. 2023 – dic. 2024}
+\position{Oficial}{nov. 2018 – mar. 2023}
+\begin{itemize}
+\item Análisis y modelos estadísticos para apoyar decisiones de negocio y entender el comportamiento financiero de los clientes.
+\item Modelos de deserción y vinculación, perfiles de consumo y análisis de redes transaccionales; captura de datos por \textit{web scraping} y API.
+\item Colaboración en la automatización de procesos del área de Riesgo.
+\end{itemize}
+
+\cvsection{Proyectos en Banco Guayaquil}
+\entry{Modelo de Banca Principal}{2025}{PySpark · Databricks · Hive · XGBoost · NetworkX · igraph}
+Diseñé e implementé un modelo que identifica a los clientes que tienen al banco como entidad principal, combinando análisis factorial, XGBoost e ingeniería de variables transaccionales. Incluye análisis de centralidad en redes de transferencias.
+\gap
+\entry{Análisis de sentimiento en comunicaciones}{2025}{Python · R · API de OpenAI · PCA · ICA}
+Construí un flujo de procesamiento de lenguaje natural sobre mensajes de clientes, con \textit{embeddings} de OpenAI y reducción de dimensionalidad mediante PCA e ICA, para clasificar y detectar patrones.
+\gap
+\entry{Return on Experience y sensibilidad al CSAT}{2025}{Econometría}
+Desarrollé modelos econométricos que miden la sensibilidad de la rentabilidad (ROA, ROE) al CSAT y al NPS: un marco para estimar el retorno de las mejoras en experiencia digital.
+\gap
+\entry{Customer Lifetime Value (CLV)}{2023}{R · survival · earth · XGBoost · Sparklyr}
+Implementé un sistema de estimación del valor del cliente a partir de pasivos y activos: análisis de supervivencia para estimar su vida útil y modelos de regresión para proyectar su comportamiento financiero.
+\gap
+\entry{Next Best Offer por rutas de vinculación}{2023}{Sistemas de recomendación}
+Modelé recomendaciones a partir de patrones de vinculación y secuencias de adquisición de productos, orientadas a campañas de venta cruzada y retención.
+\gap
+\entry{Deserción multiproducto}{2022}{R · GLMNET · XGBoost · Sparklyr}
+Predije el abandono en seguros, pasivos y otros productos con GLMNET y XGBoost; elaboré perfiles de consumo y segmentación de clientes.
+\gap
+\entry{Otros análisis de negocio}{2018 – actualidad}{}
+Predicción de pasivos de empresas a partir de datos transaccionales y análisis de grafos. Análisis de demanda y sostenibilidad de los servicios de Bancos de Barrio.
+
+\cvsection{IA generativa y desarrollo asistido}
+\begin{itemize}
+\item Desarrollo asistido por IA con Claude y Codex: especificación de requisitos y revisión iterativa de código para análisis de datos y automatización.
+\item Diseño de \textit{prompts} estructurados con objetivos, restricciones, criterios de aceptación y entregables definidos.
+\item Diseño de flujos de trabajo con agentes para ciencia de datos; conocimientos de \textit{skills} reutilizables y del protocolo MCP.
+\item Preparación asistida de visualizaciones, informes, presentaciones y documentos técnicos en \LaTeX.
+\end{itemize}
+
+\cvsection{Investigación y docencia}
+\entry{ESPOL — Ayudante de Investigación}{15 may. – 31 oct. 2021}{Escuela Superior Politécnica del Litoral, Guayaquil}
+Metodología, validación y análisis formal del estudio publicado en \textit{ACS Omega} (2023), detallado en la sección Publicación.
+\gap
+\entry{ESPOL — Técnico Docente}{jul. 2017 – sep. 2018}{Facultad de Ciencias Naturales y Matemáticas}
+\begin{itemize}
+\item Apoyo docente y análisis pre‑post de conceptos de física: rotación y balance (RMSS) y fuerza (FCI).
+\item Pronóstico de demanda estudiantil y del estado de aprobación de materias con XGBoost y series de tiempo.
+\item Análisis del programa de desastres naturales del parque AJA; herramientas para la secretaría.
+\end{itemize}
+
+\cvsection{Experiencia inicial}
+\entry{Hospital León Becerra — Pasante}{ago. – sep. 2016}{Guayaquil, Ecuador}
+Apoyo al estudio estadístico de las entradas de pacientes.
+\gap
+\entry{ESPOL — Ayudantía estadística en Postgrados}{2014 – 2016}{Facultad de Ciencias Naturales y Matemáticas}
+Estudios de mercado y demanda para abrir programas de Matemáticas, Educación, Ciencias Ambientales, Química Aplicada y Enseñanza de la Física.
+\gap
+\entry{INAMHI — Practicante de Investigación}{7 abr. – 8 may. 2015}{Estudios e Investigaciones Meteorológicas · 200 horas}
+Análisis de precipitaciones mensuales y programación de la curva ROC.
+\gap
+\entry{ESPOL — Ayudante en el CEIE}{2014}{Centro de Estudios e Investigaciones Estadísticas · 200 horas certificadas}
+Ingreso, consistencia y tabulación de datos; informes estadísticos y análisis de delitos en Guayaquil mediante series de tiempo.
+
+\cvsection{Formación}
+\entry{Magíster en Ciencia de Datos}{título: 10 abr. 2026}{Pontificia Universidad Católica de Chile}
+Arquitectura de soluciones Big Data y aprendizaje automático: Spark, Hadoop, MapReduce, métodos bayesianos, aprendizaje profundo, pruebas de hipótesis, ética de la IA y explicabilidad de modelos.
+\gap
+\entry{Ingeniero en Estadística Informática}{2012 – 2017}{Escuela Superior Politécnica del Litoral (ESPOL), Ecuador}
+Título otorgado el 29 de mayo de 2017. Registro: 1021‑2017‑1855694.\par\vspace{3.5pt}
+Tesis: \textit{Análisis de la estructura en la distribución de los ingresos de los ecuatorianos usando modelo de regresión cuantílica robusta} (\href{https://www.dspace.espol.edu.ec/retrieve/99409/D-CD102601.pdf}{repositorio ESPOL}).
+\gap
+\entry{Bachiller en Ciencias, especialización Físico‑Matemático}{2012}{Unidad Educativa San José La Salle, Guayaquil}
+
+\cvsection{Publicación}
+Bustos, D.; Galarza, C.; \textbf{Ordoñez, W.}; Brauchi, S.; Benso, B. (2023). Cost-Effective Pipeline for a Rational Design and Selection of Capsaicin Analogues Targeting TRPV1 Channels. \textit{ACS Omega}, 8(13), 11736–11749. Publicado en línea el 24 de marzo de 2023.\par\vspace{3.5pt}
+\href{https://doi.org/10.1021/acsomega.2c05672}{doi.org/10.1021/acsomega.2c05672} \enspace·\enspace \href{https://pmc.ncbi.nlm.nih.gov/articles/PMC10077575/}{texto completo en PubMed Central}\par\vspace{3.5pt}
+{\sffamily\meta\color{muted}Contribución (CRediT): metodología, validación, análisis formal, revisión y edición. Afiliación: FCNM, ESPOL.}
+
+\cvsection{Competencias técnicas}
+\skill{Lenguajes}{Python y R avanzados; SQL.}
+\skill{Big Data}{Apache Spark, PySpark, Sparklyr, SparkR, Databricks, Hive, Hadoop, MapReduce.}
+\skill{Modelado}{XGBoost, GLMNET, regresión y regresión cuantílica, análisis de supervivencia, series de tiempo, segmentación, análisis factorial, teoría de grafos.}
+\skill{NLP y analítica}{\textit{embeddings}, API de OpenAI, PCA, ICA, análisis de sentimiento.}
+\skill{Bibliotecas}{survival, earth, igraph, NetworkX, pandas, scikit-learn.}
+\skill{Visualización}{Power BI, Tableau, R Shiny, ggplot2, Matplotlib, Plotly.}
+\skill{Bases y procesos}{SQL Server, PostgreSQL, MySQL, SQLite, MongoDB, procesos ETL, Git.}
+\skill{Otras herramientas}{SPSS, Minitab, Wolfram Mathematica, \LaTeX, Oracle BI, Excel y Access avanzados.}
+
+\cvsection{Idiomas}
+Español nativo · Inglés B1 (Marco Común Europeo de Referencia).\par\vspace{3.5pt}
+{\sffamily\meta\color{muted}Centro Ecuatoriano Norteamericano, 2009–2011; certificado ELASH.}
+
+\cvsection{Certificaciones y cursos}
+\entry{SCRUM Master Professional Certificate (SMPC)}{feb. 2019}{Certiprof · credencial 71551126611886}
+\par\vspace{5pt}
+\role{Inteligencia de Negocios con Tableau {\meta\color{muted}· Sociedad Ecuatoriana de Estadística}}{sep. 2017}\vspace{2pt}
+\role{Actualización Cartográfica {\meta\color{muted}· ESPOL · 10 horas}}{oct. 2016}\vspace{2pt}
+\role{Introducción a Procesos Estocásticos {\meta\color{muted}· ESPOL · 10 horas}}{oct. 2016}\vspace{2pt}
+\role{Redatam+SP como herramienta de diseminación de datos {\meta\color{muted}· ESPOL · 10 horas}}{oct. 2016}\vspace{2pt}
+\role{Introducción al manejo de datos con Infostat y R {\meta\color{muted}· ESPOL}}{nov. 2014}\vspace{2pt}
+\role{Reconocimiento Estadístico de Patrones usando Árboles de Clasificación {\meta\color{muted}· ESPOL}}{oct. 2014}\vspace{2pt}
+
+\cvsection{Participación académica}
+\entry{XIX Jornadas de Estadística e Informática}{oct. 2016}{ESPOL}
+Ponencia: \textit{Análisis multivariado para la descripción de relaciones entre texto abierto y variables categóricas o numéricas. Una aplicación en estadística de delitos.}
+\gap
+\entry{XVIII Jornadas de Estadística}{oct. 2014}{ESPOL · 20 horas}
+
+\cvsection{Referencias}
+\newcommand{\referee}[2]{\par\needspace{2\baselineskip}{\sffamily\bfseries #1}\par{\sffamily\meta\color{muted}#2}\par\vspace{4pt}}
+\referee{Christian Galarza Morales, PhD}{Chief Data Officer, TelcoData · Profesor e investigador, ESPOL · \href{https://www.linkedin.com/in/cgalarza88/}{LinkedIn} · \href{mailto:christian.galarza@espol.edu.ec}{christian.galarza@espol.edu.ec} · \mbox{+593 98 826 9621}}
+\referee{Carlos Aníbal Suárez Hernández, PhD}{Profesor, ESPOL · PhD, McMaster University · \href{mailto:cash_anibal@hotmail.com}{cash\_anibal@hotmail.com} · \mbox{+593 99 304 2426}}
+\referee{Francisco Vera Alcívar, PhD}{Profesor, Facultad de Ciencias Naturales y Matemáticas, ESPOL · \href{mailto:fvera@espol.edu.ec}{fvera@espol.edu.ec} · \mbox{+593 98 722 6968}}
+\referee{Sonnia Paola Reyes de Vera}{ESPOL · \href{mailto:sreyes@espol.edu.ec}{sreyes@espol.edu.ec} · \mbox{+593 98 734 0409}}
+\referee{Sandra Lorena García Busto}{ESPOL · \href{mailto:slgarcia@espol.edu.ec}{slgarcia@espol.edu.ec} · \mbox{+593 4 226 9548}}
+\referee{Jorge Chong Chang}{Banco Guayaquil · \href{https://www.linkedin.com/in/jorge-chong-chang-4b791951/}{LinkedIn} · \href{mailto:jchong@bancoguayaquil.com}{jchong@bancoguayaquil.com} · \mbox{+593 98 222 2090}}
+\referee{Valeria Valencia Renteria}{Banco Guayaquil · \mbox{+593 99 536 1357}}
+\referee{Jorge Luis Fierro L.}{PYCCA S.A. · \mbox{+593 99 247 1748}}
+\referee{Ana Carolina Roha Ochoa}{Grupo Difare · \href{mailto:ana.roha.o@gmail.com}{ana.roha.o@gmail.com} · \mbox{+593 99 080 1000}}
+
+% Verificación pública (28/10/2026): tesis (IHSN/DSpace ESPOL) y artículo ACS Omega
+% (PubMed 37033853; CRediT en PMC10077575) confirmados. Galarza: CDO TelcoData y ESPOL
+% confirmados. Suárez: Google Scholar / McMaster Experts. Vera: transparencia ESPOL.
+% Pendiente de confirmar con cada persona: grafía "Reyes de Vera" (publica como Reyes
+% Ramos) y "Roha"; cargos actuales de las referencias sin huella pública.
+\end{document}

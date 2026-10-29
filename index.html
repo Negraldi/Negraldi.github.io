@@ -4,502 +4,333 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Wilson Ordóñez Ramos · Científico de Datos</title>
-<meta name="description" content="Científico de Datos en Banco Guayaquil. Modelos de deserción, CLV, next best offer, redes transaccionales y NLP. Magíster en Ciencia de Datos, PUC Chile.">
+<meta name="description" content="Wilson Ordóñez Ramos, científico de datos en Banco Guayaquil. Modelos de deserción, CLV, next best offer, redes transaccionales y NLP. Magíster en Ciencia de Datos, PUC Chile.">
 <meta name="author" content="Wilson Abdón Ordóñez Ramos">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Wilson Ordóñez Ramos · Científico de Datos">
-<meta property="og:description" content="Científico de Datos en banca · Magíster en Ciencia de Datos, PUC Chile">
+<meta property="og:description" content="Científico de datos en banca. Magíster en Ciencia de Datos, PUC Chile.">
 <meta property="og:url" content="https://negraldi.github.io/">
 <meta name="color-scheme" content="light dark">
 <link rel="canonical" href="https://negraldi.github.io/">
 <link rel="preload" href="fonts/SourceSerif4-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/SourceSans3-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Wilson Abdón Ordóñez Ramos",
   "jobTitle": "Científico de Datos",
-  "worksFor": {"@type": "Organization", "name": "Banco Guayaquil"},
+  "worksFor": {"@type": "Organization", "name": "Banco Guayaquil", "url": "https://www.bancoguayaquil.com"},
   "address": {"@type": "PostalAddress", "addressLocality": "Guayaquil", "addressCountry": "EC"},
   "email": "mailto:wilson.o563@gmail.com",
   "telephone": "+593996616866",
+  "url": "https://negraldi.github.io/",
   "alumniOf": [
     {"@type": "CollegeOrUniversity", "name": "Pontificia Universidad Católica de Chile"},
     {"@type": "CollegeOrUniversity", "name": "Escuela Superior Politécnica del Litoral"}
   ],
-  "sameAs": ["https://github.com/Negraldi"],
+  "sameAs": ["https://www.linkedin.com/in/wilson-ordo%C3%B1ez-0905b961/", "https://github.com/Negraldi"],
   "knowsAbout": ["Ciencia de datos", "Machine learning", "XGBoost", "PySpark", "Databricks", "Customer lifetime value", "Análisis de supervivencia", "NLP", "Análisis de grafos"]
 }
 </script>
-<style>
-/* Impeccable · modo Read: el documento se lee como documento; el mundo (azul tinta
-   de banca) sólo enmarca. Una superfamilia en dos roles: Source Serif 4 para leer,
-   Source Sans 3 para estructura, fechas y metadatos. Escala de contenido 1,25.
-   Fuentes alojadas en el repo (subconjunto latino, SIL OFL). */
-@font-face { font-family: "Source Serif 4"; src: url("fonts/SourceSerif4-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "Source Serif 4"; src: url("fonts/SourceSerif4-It.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
-@font-face { font-family: "Source Serif 4"; src: url("fonts/SourceSerif4-Semibold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
-@font-face { font-family: "Source Sans 3"; src: url("fonts/SourceSans3-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "Source Sans 3"; src: url("fonts/SourceSans3-Semibold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
-@font-face { font-family: "Source Sans 3"; src: url("fonts/SourceSans3-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
-:root {
-  --bg:     oklch(0.985 0.004 250);
-  --ink:    oklch(0.25 0.02 250);
-  --muted:  oklch(0.50 0.02 250);
-  --accent: oklch(0.45 0.085 245);
-  --hair:   oklch(0.88 0.012 250);
-  --wash:   oklch(0.955 0.01 250);
-
-  --serif: "Source Serif 4", "Source Serif Pro", Georgia, serif;
-  --sans:  "Source Sans 3", "Source Sans Pro", "Segoe UI", sans-serif;
-
-  --t-meta: 0.85rem;   /* 13.6 */
-  --t-body: 1.0625rem; /* 17   */
-  --t-sect: 1.328rem;  /* 21.25 */
-  --t-sub:  1.66rem;   /* 26.6 */
-  --t-name: 2.075rem;  /* 33.2 */
-
-  --s1: 0.25rem; --s2: 0.5rem; --s3: 0.75rem; --s4: 1rem;
-  --s6: 1.5rem;  --s8: 2rem;   --s12: 3rem;   --s16: 4rem;
-
-  --measure: 42rem;
-  --rail: 11rem;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg:     oklch(0.19 0.012 250);
-    --ink:    oklch(0.93 0.008 250);
-    --muted:  oklch(0.74 0.015 250);
-    --accent: oklch(0.80 0.075 240);
-    --hair:   oklch(0.33 0.015 250);
-    --wash:   oklch(0.23 0.014 250);
-  }
-}
-
-*, *::before, *::after { box-sizing: border-box; }
-html {
-  -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
-  scrollbar-color: var(--hair) var(--bg);
-  accent-color: var(--accent);
-}
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font: 400 var(--t-body)/1.6 var(--serif);
-  font-optical-sizing: auto;
-  text-rendering: optimizeLegibility;
-}
-::selection { background: var(--accent); color: var(--bg); }
-a {
-  color: var(--accent);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
-  text-decoration-color: color-mix(in oklch, var(--accent) 45%, transparent);
-}
-a:hover { text-decoration-color: currentColor; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
-
-.skip {
-  position: absolute; left: var(--s4); top: -3rem;
-  font: 600 var(--t-meta)/1 var(--sans);
-  background: var(--ink); color: var(--bg); padding: var(--s2) var(--s3);
-}
-.skip:focus { top: var(--s4); }
-
-/* --- marco: carril de navegación + columna de lectura --------------------- */
-.page {
-  max-width: calc(var(--rail) + var(--measure) + var(--s16));
-  margin: 0 auto;
-  padding: var(--s12) var(--s4) var(--s16);
-}
-@media (min-width: 60rem) {
-  .page {
-    display: grid;
-    grid-template-columns: var(--rail) minmax(0, var(--measure));
-    column-gap: var(--s16);
-    padding-inline: var(--s8);
-  }
-}
-
-nav.rail { display: none; }
-@media (min-width: 60rem) {
-  nav.rail {
-    display: block;
-    grid-column: 1; grid-row: 1 / span 2;
-    position: sticky; top: var(--s12); align-self: start;
-    font: 400 var(--t-meta)/1.5 var(--sans);
-  }
-  nav.rail ol { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--hair); }
-  nav.rail a {
-    display: block; padding: var(--s1) 0 var(--s1) var(--s3);
-    margin-left: -1px; border-left: 1px solid transparent;
-    color: var(--muted); text-decoration: none;
-  }
-  nav.rail a:hover { color: var(--ink); }
-  nav.rail a[aria-current="true"] { color: var(--accent); border-left-color: var(--accent); }
-  nav.rail .downloads { margin-top: var(--s8); display: grid; gap: var(--s2); }
-  nav.rail .downloads a { padding: 0; border: 0; margin: 0; color: var(--accent); text-decoration: underline; text-underline-offset: 0.18em; }
-}
-header, main { grid-column: 2; }
-
-/* --- cabecera -------------------------------------------------------------- */
-header { padding-bottom: var(--s8); }
-h1 {
-  font: 700 var(--t-name)/1.1 var(--sans);
-  letter-spacing: -0.015em;
-  color: var(--accent);
-  margin: 0 0 var(--s2);
-  text-wrap: balance;
-}
-.lede {
-  font: italic 400 var(--t-sub)/1.25 var(--serif);
-  margin: 0 0 var(--s4);
-  text-wrap: balance;
-}
-.contact {
-  font: 400 var(--t-meta)/1.6 var(--sans);
-  color: var(--muted);
-  margin: 0;
-  display: flex; flex-wrap: wrap; column-gap: var(--s4); row-gap: var(--s1);
-}
-.contact a { white-space: nowrap; }
-.downloads-inline {
-  font: 600 var(--t-meta)/1.6 var(--sans);
-  margin: var(--s4) 0 0;
-  display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4);
-}
-@media (min-width: 60rem) { .downloads-inline { display: none; } }
-
-/* --- secciones ------------------------------------------------------------- */
-section { border-top: 1px solid var(--hair); padding-top: var(--s6); margin-top: var(--s8); scroll-margin-top: var(--s8); }
-h2 {
-  font: 600 var(--t-sect)/1.2 var(--sans);
-  color: var(--accent);
-  margin: 0 0 var(--s4);
-}
-p { margin: 0 0 var(--s3); text-wrap: pretty; }
-.summary { margin: 0; }
-
-.entry { margin-bottom: var(--s6); }
-.entry:last-child { margin-bottom: 0; }
-.entry-head {
-  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
-  column-gap: var(--s4);
-}
-h3 {
-  font: 600 var(--t-body)/1.35 var(--sans);
-  margin: 0;
-}
-time, .when {
-  font: 400 var(--t-meta)/1.4 var(--sans);
-  font-variant-numeric: tabular-nums lining-nums;
-  color: var(--muted);
-  white-space: nowrap;
-}
-.where {
-  font: 400 var(--t-meta)/1.5 var(--sans);
-  color: var(--muted);
-  margin: 0 0 var(--s2);
-}
-
-.roles { list-style: none; margin: var(--s2) 0 var(--s4); padding: 0; font: 400 var(--t-body)/1.6 var(--sans); }
-.roles li { display: flex; flex-wrap: wrap; column-gap: var(--s3); align-items: baseline; }
-
-ul.points { margin: 0; padding-left: 1.1rem; }
-ul.points li { margin-bottom: var(--s2); padding-left: var(--s1); }
-ul.points li::marker { color: var(--muted); }
-
-.project { margin-bottom: var(--s6); }
-.project:last-child { margin-bottom: 0; }
-.stack {
-  font: 400 var(--t-meta)/1.5 var(--sans);
-  color: var(--muted);
-  margin: 0;
-}
-
-.cite { margin-bottom: var(--s3); }
-.note { font: 400 var(--t-meta)/1.5 var(--sans); color: var(--muted); margin: 0; }
-
-dl.skills { margin: 0; }
-dl.skills div { margin-bottom: var(--s3); }
-dl.skills dt { font: 600 var(--t-body)/1.5 var(--sans); display: inline; }
-dl.skills dt::after { content: ": "; }
-dl.skills dd { display: inline; margin: 0; }
-
-.compact { list-style: none; margin: 0; padding: 0; }
-.compact li {
-  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;
-  column-gap: var(--s4); padding: var(--s1) 0;
-  font: 400 var(--t-body)/1.5 var(--sans);
-}
-.compact .org { color: var(--muted); font-size: var(--t-meta); }
-
-.refs { display: grid; gap: var(--s4); }
-@media (min-width: 40rem) { .refs { grid-template-columns: 1fr 1fr; column-gap: var(--s8); } }
-.refs p { margin: 0; font: 400 var(--t-meta)/1.55 var(--sans); color: var(--muted); }
-.refs .name { display: inline-block; margin-bottom: 2px; font: 600 var(--t-body)/1.4 var(--sans); color: var(--ink); }
-
-footer {
-  grid-column: 2;
-  margin-top: var(--s12); padding-top: var(--s4);
-  border-top: 1px solid var(--hair);
-  font: 400 var(--t-meta)/1.5 var(--sans); color: var(--muted);
-}
-
-/* --- impresión: sin carril, sin color de fondo, URLs completas --------------- */
-@media print {
-  :root { --bg: #fff; --ink: #1A222B; --muted: #5B646F; --accent: #275981; --hair: #D2D8DF; }
-  @page { size: A4; margin: 18mm 20mm; }
-  body { font-size: 10.5pt; }
-  .page { display: block; padding: 0; max-width: none; }
-  nav.rail, .downloads-inline, .skip, footer { display: none; }
-  section { break-inside: auto; }
-  .entry, .project, .refs p { break-inside: avoid; }
-  h2 { break-after: avoid; }
-  a { color: inherit; text-decoration: none; }
-}
-</style>
 </head>
 <body>
 <a class="skip" href="#contenido">Saltar al contenido</a>
-<div class="page">
 
-<nav class="rail" aria-label="Secciones">
-  <ol>
-    <li><a href="#perfil">Perfil</a></li>
-    <li><a href="#experiencia">Experiencia</a></li>
-    <li><a href="#proyectos">Proyectos</a></li>
-    <li><a href="#ia">IA generativa</a></li>
-    <li><a href="#investigacion">Investigación y docencia</a></li>
-    <li><a href="#formacion">Formación</a></li>
-    <li><a href="#publicacion">Publicación</a></li>
-    <li><a href="#competencias">Competencias</a></li>
-    <li><a href="#certificaciones">Certificaciones</a></li>
-    <li><a href="#referencias">Referencias</a></li>
-  </ol>
-  <div class="downloads">
-    <a href="cv/Wilson_Ordonez_CV_2p.pdf" download>CV en PDF · 2 páginas</a>
-    <a href="cv/Wilson_Ordonez_CV_completo.pdf" download>CV completo · 4 páginas</a>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="./">Wilson Ordóñez Ramos</a>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="#trayectoria">Trayectoria</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#publicaciones">Publicaciones</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
   </div>
-</nav>
-
-<header>
-  <h1>Wilson Abdón Ordóñez Ramos</h1>
-  <p class="lede">Científico de Datos en banca · Magíster en Ciencia de Datos, PUC Chile</p>
-  <p class="contact">
-    <span>Guayaquil, Ecuador</span>
-    <a href="mailto:wilson.o563@gmail.com">wilson.o563@gmail.com</a>
-    <a href="tel:+593996616866">+593 99 661 6866</a>
-    <a href="https://github.com/Negraldi">github.com/Negraldi</a>
-  </p>
-  <p class="downloads-inline">
-    <a href="cv/Wilson_Ordonez_CV_2p.pdf" download>CV en PDF · 2 páginas</a>
-    <a href="cv/Wilson_Ordonez_CV_completo.pdf" download>CV completo · 4 páginas</a>
-  </p>
 </header>
 
 <main id="contenido">
 
-<section id="perfil" aria-labelledby="h-perfil">
-  <h2 id="h-perfil">Perfil</h2>
-  <p class="summary">Científico de Datos en Banco Guayaquil, donde trabajo desde 2018 en analítica de banca de personas. Construyo modelos de deserción y retención, valor de vida del cliente (CLV), <i>next best offer</i>, análisis de redes transaccionales y procesamiento de lenguaje natural con <i>embeddings</i>. Trabajo a diario con Python, R, SQL, PySpark y Databricks. Magíster en Ciencia de Datos por la Pontificia Universidad Católica de Chile (2026), Ingeniero en Estadística Informática por ESPOL y coautor de un artículo en <i>ACS Omega</i>.</p>
+<section class="intro" aria-labelledby="nombre">
+  <div class="wrap">
+    <h1 id="nombre">Wilson Abdón Ordóñez Ramos</h1>
+    <p class="statement">Científico de datos en <a href="https://www.bancoguayaquil.com">Banco Guayaquil</a>. Modelo cómo se comportan los clientes de banca de personas: quién se queda, quién se va, qué producto necesita después y cuánto vale la relación.</p>
+    <p class="statement-sub">Magíster en Ciencia de Datos por la <a href="https://uconline.uc.cl/programa/magister-en-ciencia-de-datos/">Pontificia Universidad Católica de Chile</a>, Ingeniero en Estadística Informática por <a href="https://www.espol.edu.ec">ESPOL</a> y coautor de un artículo en <a href="https://doi.org/10.1021/acsomega.2c05672"><i>ACS Omega</i></a>. Trabajo con Python, R, SQL, PySpark y Databricks desde Guayaquil, Ecuador.</p>
+    <div class="actions">
+      <a class="button" href="mailto:wilson.o563@gmail.com">Escribirme un correo</a>
+      <a class="plain" href="https://www.linkedin.com/in/wilson-ordo%C3%B1ez-0905b961/">LinkedIn</a>
+      <a class="plain" href="tel:+593996616866">+593 99 661 6866</a>
+      <a class="plain" href="cv/Wilson_Ordonez_CV_2p.pdf" download>Descargar CV (PDF)</a>
+    </div>
+  </div>
 </section>
 
-<section id="experiencia" aria-labelledby="h-exp">
-  <h2 id="h-exp">Experiencia</h2>
-  <article class="entry">
-    <div class="entry-head"><h3>Banco Guayaquil S.A.</h3><span class="when">nov. 2018 – actualidad</span></div>
-    <p class="where">Guayaquil, Ecuador · Analítica de Datos, Tribu Banca Personas</p>
-    <ul class="roles">
-      <li><span>Científico de Datos</span> <span class="when">ene. 2025 – actualidad</span></li>
-      <li><span>Oficial Senior</span> <span class="when">abr. 2023 – dic. 2024</span></li>
-      <li><span>Oficial</span> <span class="when">nov. 2018 – mar. 2023</span></li>
+<section class="section" id="trayectoria" aria-labelledby="h-tray">
+  <div class="wrap">
+    <div class="section-head"><h2 id="h-tray">Trayectoria</h2><a href="cv.html">Ver CV completo</a></div>
+    <ol class="register">
+      <li>
+        <span class="when">2018 – hoy</span>
+        <div>
+          <h3><a href="https://www.bancoguayaquil.com">Banco Guayaquil</a></h3>
+          <p class="sub">Analítica de Datos, Tribu Banca Personas · Guayaquil</p>
+          <ul class="roles">
+            <li><b>Científico de Datos</b> <span class="when">2025 – hoy</span><br>Modelo de banca principal, NLP sobre comunicaciones de clientes y retorno de la experiencia digital.</li>
+            <li><b>Oficial Senior</b> <span class="when">2023 – 2024</span><br>Valor de vida del cliente con análisis de supervivencia y recomendaciones por rutas de vinculación.</li>
+            <li><b>Oficial</b> <span class="when">2018 – 2023</span><br>Deserción multiproducto, perfiles de consumo, redes transaccionales y automatización de procesos de Riesgo.</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <span class="when">2021</span>
+        <div>
+          <h3>Ayudante de Investigación</h3>
+          <p class="sub"><a href="https://www.fcnm.espol.edu.ec">Facultad de Ciencias Naturales y Matemáticas, ESPOL</a></p>
+          <p>Metodología, validación y análisis formal del estudio publicado en <i>ACS Omega</i>.</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">2017 – 2018</span>
+        <div>
+          <h3>Técnico Docente</h3>
+          <p class="sub"><a href="https://www.fcnm.espol.edu.ec">Facultad de Ciencias Naturales y Matemáticas, ESPOL</a></p>
+          <p>Pronóstico de demanda estudiantil con XGBoost y series de tiempo; análisis pre-post del aprendizaje de física.</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">2014 – 2016</span>
+        <div>
+          <h3>Ayudantías y prácticas</h3>
+          <p class="sub">ESPOL · <a href="https://www.inamhi.gob.ec">INAMHI</a> · Hospital León Becerra</p>
+          <p>Estudios de demanda para programas de posgrado, análisis de precipitaciones y estadística de delitos.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="proyectos" aria-labelledby="h-proy">
+  <div class="wrap">
+    <h2 id="h-proy">Proyectos</h2>
+
+    <h3 class="subhead">En Banco Guayaquil</h3>
+    <p class="lede-note" style="margin-top:0">Proyectos internos: el código y los datos son confidenciales.</p>
+    <ol class="register">
+      <li>
+        <span class="when">2025</span>
+        <div>
+          <h3>Modelo de Banca Principal</h3>
+          <p>Identifica a los clientes que tienen al banco como entidad principal, combinando análisis factorial, XGBoost y centralidad en redes de transferencias.</p>
+          <p class="stack">PySpark · Databricks · Hive · XGBoost · NetworkX · igraph</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">2025</span>
+        <div>
+          <h3>Análisis de sentimiento en comunicaciones</h3>
+          <p>Flujo de NLP sobre mensajes de clientes con <i>embeddings</i> de OpenAI y reducción de dimensionalidad (PCA, ICA) para clasificar y detectar patrones.</p>
+          <p class="stack">Python · R · API de OpenAI</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">2025</span>
+        <div>
+          <h3>Return on Experience</h3>
+          <p>Modelos econométricos que miden la sensibilidad de la rentabilidad (ROA, ROE) al CSAT y al NPS, para estimar el retorno de mejorar la experiencia digital.</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">2023</span>
+        <div>
+          <h3>Customer Lifetime Value</h3>
+          <p>Valor del cliente sobre pasivos y activos: análisis de supervivencia para su vida útil y regresión para su comportamiento financiero.</p>
+          <p class="stack">R · survival · earth · XGBoost · Sparklyr</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">2023</span>
+        <div>
+          <h3>Next Best Offer por rutas de vinculación</h3>
+          <p>Recomendaciones a partir de las secuencias en que los clientes adquieren productos, para venta cruzada y retención.</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">2022</span>
+        <div>
+          <h3>Deserción multiproducto</h3>
+          <p>Predicción del abandono en seguros, pasivos y otros productos con GLMNET y XGBoost; perfiles de consumo y segmentación.</p>
+          <p class="stack">R · GLMNET · XGBoost · Sparklyr</p>
+        </div>
+      </li>
+    </ol>
+
+    <h3 class="subhead">Código abierto y datos públicos</h3>
+    <ol class="register">
+      <li>
+        <span class="when">2025</span>
+        <div>
+          <h3>Mapas de resultados electorales por zona</h3>
+          <p>Descarga de datos del CNE y su servicio geográfico, unión de juntas en zonas electorales y mapas interactivos de la elección de 2025 en tres ciudades.</p>
+          <p class="stack">R · sf · mapview · Leaflet</p>
+          <p class="links"><a href="GYE_RESULT_ELEC.html">Guayaquil</a><a href="QUI_RESULT_ELEC.html">Quito</a><a href="CUE_RESULT_ELEC.html">Cuenca</a><a href="https://github.com/Negraldi/Negraldi.github.io/blob/main/descarga_cne.R">Código</a></p>
+        </div>
+      </li>
+      <li>
+        <span class="when">2023</span>
+        <div>
+          <h3><a href="https://github.com/Negraldi/Urban_Structure_Visualization_Ecuador">Estructura urbana de Ecuador</a></h3>
+          <p>Mapas de la trama urbana con datos de OpenStreetMap: calles coloreadas por orientación, cuerpos de agua e islas.</p>
+          <p class="stack">R · OpenStreetMap</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">2023</span>
+        <div>
+          <h3><a href="https://github.com/Negraldi/Speaker-Diarization-and-Transcription">Diarización y transcripción de audio</a></h3>
+          <p>Flujo de extremo a extremo: descarga de audio de YouTube, transcripción y separación de hablantes.</p>
+          <p class="stack">Python · Jupyter</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">2021</span>
+        <div>
+          <h3><a href="https://github.com/Negraldi/Lexico_Espaniol">Léxico emocional en español</a></h3>
+          <p>Traducción al español de un diccionario de valencia, activación y dominancia (VAD) y de un léxico de emociones, para análisis de sentimiento.</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">2020</span>
+        <div>
+          <h3><a href="https://github.com/Negraldi/mort_covid19_ecuador">Mortalidad por COVID-19 en Ecuador</a></h3>
+          <p>Código de análisis de la mortalidad durante la pandemia en Ecuador.</p>
+          <p class="stack">R</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">2026</span>
+        <div>
+          <h3><a href="https://github.com/Negraldi/amauta">amauta</a></h3>
+          <p>Arnés pequeño para Claude Code en Node.js y Python estándar: memoria, telemetría, memoria en grafo y portal de control.</p>
+          <p class="stack">JavaScript · Python</p>
+        </div>
+      </li>
+    </ol>
+    <p class="note" style="margin-top: var(--s6)">Más repositorios, incluidos controladores para Linux, en <a href="https://github.com/Negraldi">github.com/Negraldi</a>.</p>
+  </div>
+</section>
+
+<section class="section" id="publicaciones" aria-labelledby="h-pub">
+  <div class="wrap">
+    <h2 id="h-pub">Publicaciones e investigación</h2>
+    <ol class="register">
+      <li>
+        <span class="when">2023</span>
+        <div>
+          <h3><a href="https://doi.org/10.1021/acsomega.2c05672">Cost-Effective Pipeline for a Rational Design and Selection of Capsaicin Analogues Targeting TRPV1 Channels</a></h3>
+          <p class="sub">Bustos, D.; Galarza, C.; <b>Ordoñez, W.</b>; Brauchi, S.; Benso, B. · <i>ACS Omega</i>, 8(13), 11736–11749</p>
+          <p>Contribución: metodología, validación, análisis formal, revisión y edición.</p>
+          <p class="links"><a href="https://doi.org/10.1021/acsomega.2c05672">DOI</a><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10077575/">Texto completo (PMC)</a><a href="https://pubmed.ncbi.nlm.nih.gov/37033853/">PubMed</a><a href="https://www.semanticscholar.org/author/2212783045">Semantic Scholar</a></p>
+        </div>
+      </li>
+      <li>
+        <span class="when">2017</span>
+        <div>
+          <h3><a href="https://www.dspace.espol.edu.ec/retrieve/99409/D-CD102601.pdf">Análisis de la estructura en la distribución de los ingresos de los ecuatorianos usando modelo de regresión cuantílica robusta</a></h3>
+          <p class="sub">Tesis de ingeniería · ESPOL</p>
+          <p>Brechas de ingreso laboral por sexo y región entre 2007 y 2016 con regresión cuantílica robusta sobre la ENEMDU del INEC.</p>
+          <p class="links"><a href="https://www.dspace.espol.edu.ec/retrieve/99409/D-CD102601.pdf">PDF en el repositorio ESPOL</a><a href="https://catalog.ihsn.org/citations/69997">Catálogo IHSN</a></p>
+        </div>
+      </li>
+      <li>
+        <span class="when">2016</span>
+        <div>
+          <h3>Análisis multivariado para la descripción de relaciones entre texto abierto y variables categóricas o numéricas</h3>
+          <p class="sub">Ponencia · <a href="https://fcnm.espol.edu.ec/es/jornadas-en-estad%C3%ADstica-e-inform%C3%A1tica">XIX Jornadas de Estadística e Informática, ESPOL</a></p>
+          <p>Una aplicación en estadística de delitos.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="formacion" aria-labelledby="h-form">
+  <div class="wrap">
+    <h2 id="h-form">Formación</h2>
+    <ol class="register">
+      <li>
+        <span class="when">2026</span>
+        <div>
+          <h3>Magíster en Ciencia de Datos</h3>
+          <p class="sub"><a href="https://uconline.uc.cl/programa/magister-en-ciencia-de-datos/">Pontificia Universidad Católica de Chile</a></p>
+          <p>Big Data (Spark, Hadoop), aprendizaje automático y profundo, métodos bayesianos, ética de la IA y explicabilidad.</p>
+        </div>
+      </li>
+      <li>
+        <span class="when">2012 – 2017</span>
+        <div>
+          <h3>Ingeniero en Estadística Informática</h3>
+          <p class="sub"><a href="https://www.espol.edu.ec">Escuela Superior Politécnica del Litoral (ESPOL)</a></p>
+        </div>
+      </li>
+      <li>
+        <span class="when">2019</span>
+        <div>
+          <h3>SCRUM Master Professional Certificate</h3>
+          <p class="sub"><a href="https://certiprof.com">Certiprof</a></p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="competencias" aria-labelledby="h-comp">
+  <div class="wrap">
+    <h2 id="h-comp">Competencias</h2>
+    <dl class="skills">
+      <div><dt>Lenguajes</dt><dd>Python y R avanzados; SQL.</dd></div>
+      <div><dt>Big Data</dt><dd>Spark, PySpark, Sparklyr, Databricks, Hive, Hadoop.</dd></div>
+      <div><dt>Modelado</dt><dd>XGBoost, GLMNET, regresión cuantílica, análisis de supervivencia, series de tiempo, segmentación, grafos.</dd></div>
+      <div><dt>NLP e IA generativa</dt><dd><i>Embeddings</i> y API de OpenAI, análisis de sentimiento; desarrollo asistido con Claude y Codex; agentes, <i>skills</i> y MCP.</dd></div>
+      <div><dt>Visualización</dt><dd>Power BI, Tableau, R Shiny, ggplot2, Plotly.</dd></div>
+      <div><dt>Idiomas</dt><dd>Español nativo · Inglés B1 (MCER).</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="section contact-band" id="contacto" aria-labelledby="h-cont">
+  <div class="wrap">
+    <h2 id="h-cont">Contacto</h2>
+    <ul class="contact-list">
+      <li><span class="label">Correo</span><a href="mailto:wilson.o563@gmail.com">wilson.o563@gmail.com</a></li>
+      <li><span class="label">Teléfono</span><a href="tel:+593996616866">+593 99 661 6866</a></li>
+      <li><span class="label">WhatsApp</span><a href="https://wa.me/593996616866">Escribir por WhatsApp</a></li>
+      <li><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/wilson-ordo%C3%B1ez-0905b961/">linkedin.com/in/wilson-ordoñez-0905b961</a></li>
+      <li><span class="label">GitHub</span><a href="https://github.com/Negraldi">github.com/Negraldi</a></li>
+      <li><span class="label">Ubicación</span><span>Guayaquil, Ecuador</span></li>
     </ul>
-    <ul class="points">
-      <li>Análisis y modelos estadísticos para apoyar decisiones de negocio y entender el comportamiento financiero de los clientes.</li>
-      <li>Modelos de deserción y vinculación, perfiles de consumo y análisis de redes transaccionales; captura de datos por <i>web scraping</i> y API.</li>
-      <li>Colaboración en la automatización de procesos del área de Riesgo.</li>
+
+    <h3 class="subhead" style="margin-top: var(--s12)">Descargar el CV</h3>
+    <ul class="contact-list">
+      <li><span class="label">PDF</span><span class="links" style="margin:0"><a href="cv/Wilson_Ordonez_CV_2p.pdf" download>Versión de 2 páginas</a><a href="cv/Wilson_Ordonez_CV_completo.pdf" download>Versión completa, 4 páginas</a></span></li>
+      <li><span class="label">Word</span><a href="cv/Wilson_Ordonez_CV.docx" download>Wilson_Ordonez_CV.docx</a></li>
+      <li><span class="label">Markdown</span><a href="cv/Wilson_Ordonez_CV.md" download>Wilson_Ordonez_CV.md</a></li>
+      <li><span class="label">LaTeX</span><span class="links" style="margin:0"><a href="cv/Wilson_Ordonez_CV.tex" download>Completo (.tex)</a><a href="cv/Wilson_Ordonez_CV_2p.tex" download>2 páginas (.tex)</a><a href="cv/Wilson_Ordonez_CV_LaTeX.zip" download>Paquete con fuentes (.zip)</a></span></li>
     </ul>
-  </article>
-</section>
-
-<section id="proyectos" aria-labelledby="h-proy">
-  <h2 id="h-proy">Proyectos en Banco Guayaquil</h2>
-  <article class="project">
-    <div class="entry-head"><h3>Modelo de Banca Principal</h3><time datetime="2025">2025</time></div>
-    <p>Diseñé e implementé un modelo que identifica a los clientes que tienen al banco como entidad principal, combinando análisis factorial, XGBoost e ingeniería de variables transaccionales, con análisis de centralidad en redes de transferencias.</p>
-    <p class="stack">PySpark · Databricks · Hive · XGBoost · NetworkX · igraph</p>
-  </article>
-  <article class="project">
-    <div class="entry-head"><h3>Análisis de sentimiento en comunicaciones</h3><time datetime="2025">2025</time></div>
-    <p>Construí un flujo de procesamiento de lenguaje natural sobre mensajes de clientes, con <i>embeddings</i> de OpenAI y reducción de dimensionalidad mediante PCA e ICA, para clasificar y detectar patrones.</p>
-    <p class="stack">Python · R · API de OpenAI · PCA · ICA</p>
-  </article>
-  <article class="project">
-    <div class="entry-head"><h3>Return on Experience y sensibilidad al CSAT</h3><time datetime="2025">2025</time></div>
-    <p>Desarrollé modelos econométricos que miden la sensibilidad de la rentabilidad (ROA, ROE) al CSAT y al NPS: un marco para estimar el retorno de las mejoras en experiencia digital.</p>
-  </article>
-  <article class="project">
-    <div class="entry-head"><h3>Customer Lifetime Value (CLV)</h3><time datetime="2023">2023</time></div>
-    <p>Implementé un sistema de estimación del valor del cliente a partir de pasivos y activos: análisis de supervivencia para estimar su vida útil y modelos de regresión para proyectar su comportamiento financiero.</p>
-    <p class="stack">R · survival · earth · XGBoost · Sparklyr</p>
-  </article>
-  <article class="project">
-    <div class="entry-head"><h3>Next Best Offer por rutas de vinculación</h3><time datetime="2023">2023</time></div>
-    <p>Modelé recomendaciones a partir de patrones de vinculación y secuencias de adquisición de productos, orientadas a campañas de venta cruzada y retención.</p>
-  </article>
-  <article class="project">
-    <div class="entry-head"><h3>Deserción multiproducto</h3><time datetime="2022">2022</time></div>
-    <p>Predije el abandono en seguros, pasivos y otros productos con GLMNET y XGBoost; elaboré perfiles de consumo y segmentación de clientes.</p>
-    <p class="stack">R · GLMNET · XGBoost · Sparklyr</p>
-  </article>
-  <article class="project">
-    <div class="entry-head"><h3>Otros análisis de negocio</h3><span class="when">2018 – actualidad</span></div>
-    <p>Predicción de pasivos de empresas a partir de datos transaccionales y análisis de grafos. Análisis de demanda y sostenibilidad de los servicios de Bancos de Barrio.</p>
-  </article>
-</section>
-
-<section id="ia" aria-labelledby="h-ia">
-  <h2 id="h-ia">IA generativa y desarrollo asistido</h2>
-  <ul class="points">
-    <li>Desarrollo asistido por IA con Claude y Codex: especificación de requisitos y revisión iterativa de código para análisis de datos y automatización.</li>
-    <li>Diseño de <i>prompts</i> estructurados con objetivos, restricciones, criterios de aceptación y entregables definidos.</li>
-    <li>Diseño de flujos de trabajo con agentes para ciencia de datos; conocimientos de <i>skills</i> reutilizables y del protocolo MCP.</li>
-    <li>Preparación asistida de visualizaciones, informes, presentaciones y documentos técnicos en LaTeX.</li>
-  </ul>
-</section>
-
-<section id="investigacion" aria-labelledby="h-inv">
-  <h2 id="h-inv">Investigación y docencia</h2>
-  <article class="entry">
-    <div class="entry-head"><h3>ESPOL · Ayudante de Investigación</h3><span class="when">may. – oct. 2021</span></div>
-    <p class="where">Escuela Superior Politécnica del Litoral, Guayaquil</p>
-    <p>Metodología, validación y análisis formal del estudio publicado en <i>ACS Omega</i> (2023).</p>
-  </article>
-  <article class="entry">
-    <div class="entry-head"><h3>ESPOL · Técnico Docente</h3><span class="when">jul. 2017 – sep. 2018</span></div>
-    <p class="where">Facultad de Ciencias Naturales y Matemáticas</p>
-    <ul class="points">
-      <li>Apoyo docente y análisis pre‑post de conceptos de física: rotación y balance (RMSS) y fuerza (FCI).</li>
-      <li>Pronóstico de demanda estudiantil y del estado de aprobación de materias con XGBoost y series de tiempo.</li>
-      <li>Análisis del programa de desastres naturales del parque AJA; herramientas para la secretaría.</li>
-    </ul>
-  </article>
-  <article class="entry">
-    <div class="entry-head"><h3>Experiencia inicial</h3><span class="when">2014 – 2016</span></div>
-    <ul class="points">
-      <li><b>ESPOL, Postgrados</b> (2014–2016): estudios de mercado y demanda para abrir programas de Matemáticas, Educación, Ciencias Ambientales, Química Aplicada y Enseñanza de la Física.</li>
-      <li><b>Hospital León Becerra</b> (ago.–sep. 2016): estudio estadístico de las entradas de pacientes.</li>
-      <li><b>INAMHI</b> (abr.–may. 2015, 200 horas): análisis de precipitaciones mensuales y programación de la curva ROC.</li>
-      <li><b>ESPOL, CEIE</b> (2014, 200 horas): tabulación de datos, informes estadísticos y análisis de delitos en Guayaquil con series de tiempo.</li>
-    </ul>
-  </article>
-</section>
-
-<section id="formacion" aria-labelledby="h-form">
-  <h2 id="h-form">Formación</h2>
-  <article class="entry">
-    <div class="entry-head"><h3>Magíster en Ciencia de Datos</h3><span class="when">título: abr. 2026</span></div>
-    <p class="where">Pontificia Universidad Católica de Chile</p>
-    <p>Arquitectura de soluciones Big Data y aprendizaje automático: Spark, Hadoop, MapReduce, métodos bayesianos, aprendizaje profundo, pruebas de hipótesis, ética de la IA y explicabilidad de modelos.</p>
-  </article>
-  <article class="entry">
-    <div class="entry-head"><h3>Ingeniero en Estadística Informática</h3><span class="when">2012 – 2017</span></div>
-    <p class="where">Escuela Superior Politécnica del Litoral (ESPOL), Ecuador</p>
-    <p>Tesis: <i>Análisis de la estructura en la distribución de los ingresos de los ecuatorianos usando modelo de regresión cuantílica robusta</i> (<a href="https://www.dspace.espol.edu.ec/retrieve/99409/D-CD102601.pdf">repositorio ESPOL</a>).</p>
-  </article>
-  <article class="entry">
-    <div class="entry-head"><h3>Bachiller en Ciencias, especialización Físico‑Matemático</h3><span class="when">2012</span></div>
-    <p class="where">Unidad Educativa San José La Salle, Guayaquil</p>
-  </article>
-</section>
-
-<section id="publicacion" aria-labelledby="h-pub">
-  <h2 id="h-pub">Publicación</h2>
-  <p class="cite">Bustos, D.; Galarza, C.; <b>Ordoñez, W.</b>; Brauchi, S.; Benso, B. (2023). Cost-Effective Pipeline for a Rational Design and Selection of Capsaicin Analogues Targeting TRPV1 Channels. <i>ACS Omega</i>, 8(13), 11736–11749.</p>
-  <p class="cite"><a href="https://doi.org/10.1021/acsomega.2c05672">doi.org/10.1021/acsomega.2c05672</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10077575/">texto completo en PubMed Central</a></p>
-  <p class="note">Contribución (CRediT): metodología, validación, análisis formal, revisión y edición. Afiliación: FCNM, ESPOL.</p>
-</section>
-
-<section id="competencias" aria-labelledby="h-comp">
-  <h2 id="h-comp">Competencias técnicas</h2>
-  <dl class="skills">
-    <div><dt>Lenguajes</dt><dd>Python y R avanzados; SQL.</dd></div>
-    <div><dt>Big Data</dt><dd>Apache Spark, PySpark, Sparklyr, SparkR, Databricks, Hive, Hadoop, MapReduce.</dd></div>
-    <div><dt>Modelado</dt><dd>XGBoost, GLMNET, regresión y regresión cuantílica, análisis de supervivencia, series de tiempo, segmentación, análisis factorial, teoría de grafos.</dd></div>
-    <div><dt>NLP y analítica</dt><dd><i>embeddings</i>, API de OpenAI, PCA, ICA, análisis de sentimiento.</dd></div>
-    <div><dt>Bibliotecas</dt><dd>survival, earth, igraph, NetworkX, pandas, scikit-learn.</dd></div>
-    <div><dt>Visualización</dt><dd>Power BI, Tableau, R Shiny, ggplot2, Matplotlib, Plotly.</dd></div>
-    <div><dt>Bases y procesos</dt><dd>SQL Server, PostgreSQL, MySQL, SQLite, MongoDB, procesos ETL, Git.</dd></div>
-    <div><dt>Otras herramientas</dt><dd>SPSS, Minitab, Wolfram Mathematica, LaTeX, Oracle BI, Excel y Access avanzados.</dd></div>
-    <div><dt>Idiomas</dt><dd>Español nativo · Inglés B1 (MCER); Centro Ecuatoriano Norteamericano, certificado ELASH.</dd></div>
-  </dl>
-</section>
-
-<section id="certificaciones" aria-labelledby="h-cert">
-  <h2 id="h-cert">Certificaciones, cursos y participación académica</h2>
-  <ul class="compact">
-    <li><span>SCRUM Master Professional Certificate (SMPC) <span class="org">· Certiprof</span></span><span class="when">feb. 2019</span></li>
-    <li><span>Inteligencia de Negocios con Tableau <span class="org">· Sociedad Ecuatoriana de Estadística</span></span><span class="when">sep. 2017</span></li>
-    <li><span>Actualización Cartográfica <span class="org">· ESPOL · 10 horas</span></span><span class="when">oct. 2016</span></li>
-    <li><span>Introducción a Procesos Estocásticos <span class="org">· ESPOL · 10 horas</span></span><span class="when">oct. 2016</span></li>
-    <li><span>Redatam+SP como herramienta de diseminación de datos <span class="org">· ESPOL · 10 horas</span></span><span class="when">oct. 2016</span></li>
-    <li><span>Introducción al manejo de datos con Infostat y R <span class="org">· ESPOL</span></span><span class="when">nov. 2014</span></li>
-    <li><span>Reconocimiento Estadístico de Patrones usando Árboles de Clasificación <span class="org">· ESPOL</span></span><span class="when">oct. 2014</span></li>
-  </ul>
-  <article class="entry" style="margin-top: var(--s6)">
-    <div class="entry-head"><h3>XIX Jornadas de Estadística e Informática, ESPOL</h3><span class="when">oct. 2016</span></div>
-    <p>Ponencia: <i>Análisis multivariado para la descripción de relaciones entre texto abierto y variables categóricas o numéricas. Una aplicación en estadística de delitos.</i></p>
-  </article>
-  <article class="entry">
-    <div class="entry-head"><h3>XVIII Jornadas de Estadística, ESPOL</h3><span class="when">oct. 2014</span></div>
-    <p class="where">20 horas</p>
-  </article>
-</section>
-
-<section id="referencias" aria-labelledby="h-ref">
-  <h2 id="h-ref">Referencias</h2>
-  <div class="refs">
-    <p><span class="name">Christian Galarza Morales, PhD</span><br><span class="detail">Chief Data Officer, TelcoData · Profesor e investigador, ESPOL<br><a href="mailto:christian.galarza@espol.edu.ec">christian.galarza@espol.edu.ec</a> · +593 98 826 9621</span></p>
-    <p><span class="name">Carlos Aníbal Suárez Hernández, PhD</span><br><span class="detail">Profesor, ESPOL · PhD, McMaster University<br><a href="mailto:cash_anibal@hotmail.com">cash_anibal@hotmail.com</a> · +593 99 304 2426</span></p>
-    <p><span class="name">Francisco Vera Alcívar, PhD</span><br><span class="detail">Profesor, FCNM, ESPOL<br><a href="mailto:fvera@espol.edu.ec">fvera@espol.edu.ec</a> · +593 98 722 6968</span></p>
-    <p><span class="name">Sonnia Paola Reyes de Vera</span><br><span class="detail">ESPOL<br><a href="mailto:sreyes@espol.edu.ec">sreyes@espol.edu.ec</a> · +593 98 734 0409</span></p>
-    <p><span class="name">Sandra Lorena García Busto</span><br><span class="detail">ESPOL<br><a href="mailto:slgarcia@espol.edu.ec">slgarcia@espol.edu.ec</a> · +593 4 226 9548</span></p>
-    <p><span class="name">Jorge Chong Chang</span><br><span class="detail">Banco Guayaquil<br><a href="mailto:jchong@bancoguayaquil.com">jchong@bancoguayaquil.com</a> · +593 98 222 2090</span></p>
-    <p><span class="name">Valeria Valencia Renteria</span><br><span class="detail">Banco Guayaquil<br>+593 99 536 1357</span></p>
-    <p><span class="name">Jorge Luis Fierro L.</span><br><span class="detail">PYCCA S.A.<br>+593 99 247 1748</span></p>
-    <p><span class="name">Ana Carolina Roha Ochoa</span><br><span class="detail">Grupo Difare<br><a href="mailto:ana.roha.o@gmail.com">ana.roha.o@gmail.com</a> · +593 99 080 1000</span></p>
+    <p class="note" style="margin-top: var(--s4)">Los archivos .tex compilan con XeLaTeX, también en Overleaf. Referencias profesionales en el <a href="cv.html#referencias">CV completo</a>.</p>
   </div>
 </section>
 
 </main>
 
-<footer>Wilson Ordóñez Ramos · Curriculum vitae · actualizado en octubre de 2026</footer>
-</div>
-
-<script>
-// Marca en el carril la sección visible. Sin dependencias; sin efecto si falla.
-(function () {
-  try {
-    var links = Array.prototype.slice.call(document.querySelectorAll('nav.rail a[href^="#"]'));
-    if (!links.length || !('IntersectionObserver' in window)) return;
-    var byId = {};
-    links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        links.forEach(function (a) { a.removeAttribute('aria-current'); });
-        var a = byId[e.target.id]; if (a) a.setAttribute('aria-current', 'true');
-      });
-    }, { rootMargin: '-20% 0px -70% 0px' });
-    document.querySelectorAll('main section[id]').forEach(function (s) { io.observe(s); });
-  } catch (e) {}
-})();
-</script>
+<footer class="footer">
+  <div class="wrap">
+    <span>Wilson Ordóñez Ramos · Guayaquil, Ecuador</span>
+    <span>Actualizado en octubre de 2026 · <a href="https://github.com/Negraldi/Negraldi.github.io">Código del sitio</a></span>
+  </div>
+</footer>
 </body>
 </html>
